@@ -82,11 +82,18 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="contact-block" aria-label="İletişim bilgileri">
-            <a href="mailto:hemrecevik@gmail.com">hemrecevik@gmail.com</a>
-            <a href="tel:+905414981116">+90 541 498 1116</a>
-            <span>Gölcük / Kocaeli</span>
-            <span>Türkçe, İngilizce</span>
+          <div className="header-side">
+            <img
+              className="profile-photo"
+              src="/profile.jpg"
+              alt="Hüseyin Emre Çevik portre fotoğrafı"
+            />
+            <div className="contact-block" aria-label="İletişim bilgileri">
+              <a href="mailto:hemrecevik@gmail.com">hemrecevik@gmail.com</a>
+              <a href="tel:+905414981116">+90 541 498 1116</a>
+              <span>Gölcük / Kocaeli</span>
+              <span>Türkçe, İngilizce</span>
+            </div>
           </div>
         </header>
 

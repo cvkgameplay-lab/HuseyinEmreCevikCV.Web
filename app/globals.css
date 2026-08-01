@@ -88,6 +88,22 @@ h1 {
   line-height: 1.7;
 }
 
+.header-side {
+  display: grid;
+  justify-items: end;
+  align-content: start;
+  gap: 16px;
+}
+
+.profile-photo {
+  width: 148px;
+  height: 148px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+  object-position: center top;
+  background: #ffffff;
+}
+
 .contact-block {
   display: grid;
   align-content: start;
@@ -247,6 +263,15 @@ h2 {
   .contact-block,
   .experience-meta {
     text-align: left;
+  }
+
+  .header-side {
+    justify-items: start;
+  }
+
+  .profile-photo {
+    width: 128px;
+    height: 128px;
   }
 
   .resume-body {
