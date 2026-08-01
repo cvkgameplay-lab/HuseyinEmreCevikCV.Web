@@ -35,7 +35,9 @@ test("server-renders Huseyin Emre Cevik CV site", async () => {
   assert.match(html, /Softtech/);
   assert.match(html, /Upenerji/);
   assert.match(html, /hemrecevik@gmail\.com/);
-  assert.match(html, /Backend ağırlıklı full-stack engineer/);
+  assert.match(html, /backend ağırlıklı full-stack yazılım mühendisi/);
+  assert.match(html, /Yetkinlikler/);
+  assert.match(html, /Deneyimler/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 

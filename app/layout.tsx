@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Hüseyin Emre Çevik | Software Engineer",
   description:
-    "Backend ağırlıklı full-stack software engineer. .NET, microservices, banking, capital markets and business applications.",
+    "Hüseyin Emre Çevik için sade, modern kişisel CV sitesi.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
