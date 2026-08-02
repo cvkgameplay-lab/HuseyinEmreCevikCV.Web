@@ -5,29 +5,48 @@
     <title>Hüseyin Emre Çevik CV</title>
     <style>
       @page {
-        size: A4;
-        margin: 7mm;
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      :root {
+        --pdf-background: #353537;
+        --pdf-primary-text: #f3f4f6;
+        --pdf-secondary-text: #d1d5db;
+        --pdf-muted-text: #b9c1c8;
+        --pdf-accent: #55b7df;
+        --pdf-accent-secondary: #8bdcc4;
+        --pdf-divider: #bfc5ca;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html,
       body {
+        width: 210mm;
+        min-height: 297mm;
         margin: 0;
-        color: #529cca;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #38383b;
+        background: var(--pdf-background);
       }
 
-      .page {
-        min-height: 283mm;
-        padding: 7mm 6mm;
-        background: #38383b;
+      body {
+        color: var(--pdf-primary-text);
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .pdf-page {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 10.5mm 11mm 10mm;
+        background: var(--pdf-background);
       }
 
       header {
-        margin-bottom: 9mm;
+        margin-bottom: 8.2mm;
         text-align: center;
       }
 
@@ -40,72 +59,100 @@
       }
 
       h1 {
-        margin-bottom: 2.4mm;
-        color: #ffffff;
-        font-size: 24px;
+        margin-bottom: 2.1mm;
+        color: var(--pdf-primary-text);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 23pt;
+        font-weight: 700;
+        letter-spacing: 0.045em;
         line-height: 1;
-        letter-spacing: 0.04em;
         text-transform: uppercase;
       }
 
       .role {
-        margin-bottom: 3mm;
-        color: #8dd9bf;
-        font-size: 9.8px;
+        margin-bottom: 3.1mm;
+        color: var(--pdf-accent-secondary);
+        font-size: 9pt;
         font-weight: 800;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.11em;
+        line-height: 1.1;
         text-transform: uppercase;
       }
 
       .contact {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 11px;
-        color: #8dd9bf;
-        font-size: 9px;
+        gap: 0 8px;
+        color: var(--pdf-secondary-text);
+        font-size: 8pt;
         font-weight: 700;
+        line-height: 1.3;
       }
 
       .contact span + span::before {
         content: "|";
-        margin-right: 11px;
-        color: rgba(255, 255, 255, 0.62);
+        margin-right: 8px;
+        color: rgba(209, 213, 219, 0.72);
       }
 
       section {
-        margin-top: 6.6mm;
+        margin-top: 5.4mm;
       }
 
-      h2 {
-        margin-bottom: 3.4mm;
+      .section-title {
         display: grid;
         grid-template-columns: auto 1fr;
         gap: 10px;
         align-items: center;
-        color: #529cca;
-        font-size: 10.8px;
+        margin-bottom: 2.4mm;
+        color: var(--pdf-accent);
+        font-size: 11pt;
         font-weight: 900;
+        line-height: 1.1;
       }
 
-      h2::after {
+      .section-title::after {
         content: "";
         height: 1px;
-        background: rgba(82, 156, 202, 0.78);
+        background: color-mix(in srgb, var(--pdf-divider) 74%, transparent);
       }
 
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3.2px 8px;
-        color: #529cca;
-        font-size: 8.9px;
-        font-weight: 800;
+      .plain-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .skills span + span::before {
-        content: "|";
-        margin-right: 8px;
-        color: rgba(141, 217, 191, 0.72);
+      .plain-list li {
+        position: relative;
+        margin-bottom: 1.2mm;
+        padding-left: 10px;
+        color: var(--pdf-secondary-text);
+        font-size: 8.35pt;
+        line-height: 1.28;
+      }
+
+      .plain-list li:last-child {
+        margin-bottom: 0;
+      }
+
+      .plain-list li::before {
+        content: "";
+        position: absolute;
+        top: 0.48em;
+        left: 0;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--pdf-accent-secondary);
+      }
+
+      .skills-list li {
+        color: var(--pdf-secondary-text);
+        font-size: 8.9pt;
+        font-weight: 700;
+        line-height: 1.25;
       }
 
       .job {
@@ -113,100 +160,106 @@
       }
 
       .job + .job {
-        margin-top: 5.6mm;
+        margin-top: 4mm;
       }
 
-      .job-head {
-        margin-bottom: 2.4mm;
+      .experience-header {
         display: grid;
-        grid-template-columns: minmax(122px, 0.9fr) minmax(92px, 0.42fr) minmax(112px, 0.48fr) auto;
-        gap: 9px;
+        grid-template-columns: 1.42fr 0.78fr 1.08fr 1.02fr;
+        column-gap: 8px;
         align-items: baseline;
+        margin-bottom: 1.6mm;
       }
 
-      h3 {
-        margin-bottom: 0;
-        color: #529cca;
-        font-size: 9.6px;
-        line-height: 1.15;
+      .experience-header h3,
+      .experience-header p,
+      .experience-header time {
+        margin: 0;
+        font-size: 8.55pt;
+        line-height: 1.18;
       }
 
-      .company,
-      .place,
+      .experience-header h3 {
+        color: var(--pdf-primary-text);
+        font-weight: 900;
+      }
+
+      .company {
+        color: var(--pdf-accent-secondary);
+        font-weight: 900;
+      }
+
+      .place {
+        color: var(--pdf-muted-text);
+        font-style: italic;
+        font-weight: 700;
+      }
+
       .period {
-        margin-bottom: 0;
-        color: #8dd9bf;
-        font-size: 9px;
-        font-weight: 800;
-      }
-
-      .period {
-        white-space: nowrap;
+        color: var(--pdf-primary-text);
+        font-weight: 900;
         text-align: right;
+        white-space: nowrap;
       }
 
-      ul {
-        margin-bottom: 0;
-        padding-left: 0;
-        list-style: none;
-      }
-
-      li {
-        position: relative;
-        padding-left: 10px;
-        color: #529cca;
-        font-size: 8px;
-        line-height: 1.4;
-      }
-
-      li::before {
-        content: "-";
-        position: absolute;
-        left: 0;
-      }
-
-      li + li {
-        margin-top: 1.55mm;
-      }
-
-      .education-grid,
-      .personal-grid {
+      .education-line {
         display: grid;
-        gap: 5px 13px;
-        color: #529cca;
-        font-size: 8.9px;
-        font-weight: 800;
+        grid-template-columns: 1.35fr 1.55fr 1fr 0.8fr;
+        column-gap: 8px;
+        align-items: baseline;
+        margin-bottom: 1.4mm;
+        color: var(--pdf-secondary-text);
+        font-size: 8.65pt;
+        line-height: 1.25;
       }
 
-      .education-grid {
-        grid-template-columns: minmax(118px, 0.8fr) minmax(140px, 1fr) minmax(92px, 0.56fr) auto;
+      .education-line strong {
+        color: var(--pdf-primary-text);
+        font-weight: 900;
       }
 
-      .education-grid p {
-        grid-column: 1 / -1;
+      .education-line .place {
+        font-size: 8.55pt;
+      }
+
+      .education-line time {
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .education-detail {
+        margin: 0;
+        color: var(--pdf-secondary-text);
+        font-size: 8.45pt;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .meta-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        color: var(--pdf-secondary-text);
+        font-size: 8.55pt;
+        line-height: 1.3;
+      }
+
+      .meta-row p {
         margin-bottom: 0;
       }
 
-      .personal-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .personal-grid p {
-        margin-bottom: 0;
-      }
-
-      .personal-grid strong {
-        color: #529cca;
+      .meta-row strong {
+        color: var(--pdf-primary-text);
+        font-weight: 900;
       }
     </style>
   </head>
   <body>
-    <div class="page">
+    <main class="pdf-page">
       <header>
         <h1>Hüseyin Emre Çevik</h1>
         <p class="role">Senior Software Developer</p>
-        <div class="contact">
-          <span>hemrecevik</span>
+        <div class="contact" aria-label="İletişim bilgileri">
           <span>+90 541 498 1116</span>
           <span>hemrecevik@gmail.com</span>
           <span>Gölcük / Kocaeli</span>
@@ -214,114 +267,108 @@
       </header>
 
       <section>
-        <h2>Yetkinlikler</h2>
-        <div class="skills">
-          <span>C#</span><span>.NET</span><span>.NET 8</span><span>Java</span><span>JavaScript</span>
-          <span>PostgreSQL</span><span>MSSQL</span><span>React</span><span>jQuery</span><span>Git</span>
-          <span>TFS</span><span>Camunda BPM</span><span>Unit Testing</span><span>OOP</span>
-          <span>Microservices</span><span>Frontend</span><span>Backend</span><span>Full-Stack</span>
-        </div>
+        <h2 class="section-title">Yetkinlikler</h2>
+        <ul class="plain-list skills-list">
+          <li>C# | .NET | .NET 8 | Java | JavaScript | PostgreSQL | MSSQL</li>
+          <li>React | jQuery | Git | TFS | Camunda BPM | Unit Testing</li>
+          <li>OOP | Microservices</li>
+        </ul>
       </section>
 
       <section>
-        <h2>Deneyimler</h2>
+        <h2 class="section-title">Deneyimler</h2>
 
         <article class="job">
-          <div class="job-head">
+          <div class="experience-header">
             <h3>Software Engineer</h3>
             <p class="company">Fimple</p>
             <p class="place">İstanbul, Türkiye</p>
-            <p class="period">03/2026 - Devam</p>
+            <time class="period">Mart 2026 - Günümüz</time>
           </div>
-          <ul>
-            <li>Fimple bünyesinde Tera Bank müşterisine özel geliştirilen dijital bankacılık platformunda görev alıyorum.</li>
-            <li>Kredi başvurusu, tahsis, kullandırım, tahsilat ve risk süreçlerine yönelik geliştirmeler gerçekleştiriyorum.</li>
-            <li>Yeni özellik geliştirme, servis bakımı ve üretim ortamında karşılaşılan hataların giderilmesi süreçlerinde aktif rol alıyorum.</li>
-            <li>Experian, Telco, AML ve DMS gibi üçüncü parti servislerle entegrasyon geliştirmeleri ve iyileştirmeleri gerçekleştiriyorum.</li>
+          <ul class="plain-list">
+            <li>Tera Bank müşterisine özel dijital bankacılık platformunda görev alıyorum.</li>
+            <li>Kredi başvurusu, tahsis, kullandırım, tahsilat ve risk süreçlerine yönelik geliştirmeler yapıyorum.</li>
+            <li>Yeni özellik geliştirme, servis bakımı ve üretim hatalarının giderilmesi süreçlerinde aktif rol alıyorum.</li>
+            <li>Experian, Telco, AML ve DMS servisleriyle entegrasyon geliştirmeleri ve iyileştirmeleri gerçekleştiriyorum.</li>
             <li>REST API geliştirme, veritabanı sorgu optimizasyonu ve performans iyileştirme çalışmalarını yürütüyorum.</li>
-            <li>İş birimleri ve banka ekipleriyle koordineli çalışarak analiz, geliştirme, test ve canlıya alma süreçlerine katkı sağlıyorum.</li>
+            <li>İş birimleri ve banka ekipleriyle analiz, geliştirme, test ve canlıya alma süreçlerine katkı sağlıyorum.</li>
           </ul>
         </article>
 
         <article class="job">
-          <div class="job-head">
+          <div class="experience-header">
             <h3>Software Engineer</h3>
             <p class="company">Dgpays</p>
             <p class="place">İstanbul, Türkiye</p>
-            <p class="period">01/2023 - 03/2026</p>
+            <time class="period">Ocak 2023 - Mart 2026</time>
           </div>
-          <ul>
+          <ul class="plain-list">
             <li>Temel bankacılık departmanı altında krediler ekibinde çalıştım.</li>
             <li>Kredi, tahsilat, teminat, müşteri başvuru, yasal takip ve risk domainleri için bağımsız mikro servisler geliştirdim.</li>
             <li>CRUD API'leri, .NET 8 backend servisleri ve React arayüz geliştirmelerini destekledim.</li>
             <li>İş akışları ve süreç otomasyonu için Camunda Modeler kullanarak süreç tasarımı gerçekleştirdim.</li>
             <li>Dolt ve Trino kullanarak veri yönetimi, entegrasyon ve veritabanı script süreçlerini yürüttüm.</li>
-            <li>Git versiyon kontrol sistemi kullanarak kod yönetimi ve iş birliği süreçlerini etkin şekilde yönettim.</li>
+            <li>Git versiyon kontrol sistemiyle kod yönetimi ve iş birliği süreçlerini etkin şekilde yönettim.</li>
           </ul>
         </article>
 
         <article class="job">
-          <div class="job-head">
+          <div class="experience-header">
             <h3>Software Engineer</h3>
             <p class="company">Softtech</p>
             <p class="place">İstanbul, Türkiye</p>
-            <p class="period">09/2021 - 01/2023</p>
+            <time class="period">Eylül 2021 - Ocak 2023</time>
           </div>
-          <ul>
-            <li>Sermaye piyasaları alım satım sistemleri departmanı altında alım-satım ve risk kontrol sistemleri biriminde çalıştım.</li>
+          <ul class="plain-list">
+            <li>Sermaye piyasaları alım-satım ve risk kontrol sistemleri biriminde çalıştım.</li>
             <li>Borsa emirlerinin kontrolü ve borsaya aktarımı için web servis geliştirmeleri yaptım.</li>
             <li>Trademaster client uygulaması ve ilgili servislerin geliştirme ve destek süreçlerinde rol aldım.</li>
             <li>Akıllı Emir API entegrasyonu, tarihli emir, şartlı emir ve zincir emir ekranları geliştirdim.</li>
-            <li>Mobil ve web cihazları için RESTful ve SOAP servisleri ile entegrasyon çalışmalarına destek verdim.</li>
+            <li>Mobil ve web cihazları için RESTful ve SOAP servisleriyle entegrasyon çalışmalarına destek verdim.</li>
           </ul>
         </article>
 
         <article class="job">
-          <div class="job-head">
+          <div class="experience-header">
             <h3>Full-Stack Engineer</h3>
             <p class="company">Upenerji</p>
             <p class="place">Konya, Türkiye</p>
-            <p class="period">11/2020 - 09/2021</p>
+            <time class="period">Kasım 2020 - Eylül 2021</time>
           </div>
-          <ul>
+          <ul class="plain-list">
             <li>Enerji sektöründeki firmalara danışmanlık ve yazılım hizmeti verdim.</li>
             <li>MEDAŞ için kurum içinde kullanılan web projeleri geliştirdim.</li>
-            <li>.NET MVC, MSSQL ve Android teknolojileriyle puantaj, proje yönetim ve ziyaretçi takip sistemleri üzerinde çalıştım.</li>
+            <li>.NET MVC, MSSQL ve Android ile puantaj, proje yönetim ve ziyaretçi takip sistemleri üzerinde çalıştım.</li>
           </ul>
         </article>
       </section>
 
       <section>
-        <h2>Eğitim</h2>
-        <div class="education-grid">
-          <strong>Mühendislik Fakültesi</strong>
+        <h2 class="section-title">Eğitim</h2>
+        <div class="education-line">
+          <strong>Bilgisayar Mühendisliği</strong>
           <span>Konya Teknik Üniversitesi</span>
-          <span>Konya, Türkiye</span>
+          <span class="place">Konya, Türkiye</span>
           <time>2016 - 2020</time>
-          <p>Bilgisayar Mühendisliği</p>
         </div>
+        <p class="education-detail">Mühendislik Fakültesi | GNO: 3.04</p>
       </section>
 
       <section>
-        <h2>Kişisel Bilgiler</h2>
-        <div class="personal-grid">
-          <p><strong>Doğum Tarihi:</strong> 14.08.1998</p>
-          <p><strong>Medeni Durum:</strong> Evli</p>
-          <p><strong>Askerlik:</strong> Tamamlandı</p>
-          <p><strong>Adres:</strong> Gölcük / Kocaeli</p>
-          <p><strong>Ehliyet:</strong> B Sınıfı</p>
-          <p><strong>Dil:</strong> Türkçe, İngilizce</p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Diğerleri</h2>
-        <ul>
-          <li>GNO: 3.04</li>
-          <li>Yüksek Onur Belgesi: Konya Teknik Üniversitesi, 12/2019</li>
-          <li>Yüksek Onur Belgesi: Konya Teknik Üniversitesi, 06/2020</li>
+        <h2 class="section-title">Başarılar ve Belgeler</h2>
+        <ul class="plain-list">
+          <li>Yüksek Onur Belgesi - Konya Teknik Üniversitesi, 12/2019</li>
+          <li>Yüksek Onur Belgesi - Konya Teknik Üniversitesi, 06/2020</li>
         </ul>
       </section>
-    </div>
+
+      <section>
+        <h2 class="section-title">Ek Bilgiler</h2>
+        <div class="meta-row">
+          <p><strong>Konum:</strong> Gölcük / Kocaeli</p>
+          <p><strong>Diller:</strong> Türkçe, İngilizce</p>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
