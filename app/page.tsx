@@ -73,7 +73,7 @@ const experiences: Experience[] = [
     company: "Fimple",
     logo: "/brand/fimple.png",
     initials: "FI",
-    logoTone: "dark",
+    logoTone: "light",
     period: "Mart 2026 - Günümüz",
     place: "İstanbul, Türkiye",
     bullets: [
