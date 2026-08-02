@@ -10,7 +10,7 @@ type Experience = {
   company: string;
   logo?: string;
   initials: string;
-  logoTone: "dark" | "light" | "mono";
+  logoTone: "dark" | "light" | "mono" | "upenerji";
   period: string;
   place: string;
   bullets: string[];
@@ -121,8 +121,9 @@ const experiences: Experience[] = [
   {
     role: "Full-Stack Engineer",
     company: "Upenerji",
+    logo: "/brand/upenerji.jpg",
     initials: "UP",
-    logoTone: "mono",
+    logoTone: "upenerji",
     period: "Kasım 2020 - Eylül 2021",
     place: "Konya, Türkiye",
     bullets: [
@@ -338,7 +339,7 @@ function ExperienceCard({ experience }: Readonly<{ experience: Experience }>) {
 function CompanyLogo({ experience }: Readonly<{ experience: Experience }>) {
   return (
     <div className={`company-logo company-logo--${experience.logoTone}`} aria-hidden={experience.logo ? undefined : true}>
-      <span className="logo-fallback">{experience.initials}</span>
+      {!experience.logo ? <span className="logo-fallback">{experience.initials}</span> : null}
       {experience.logo ? (
         <Image src={experience.logo} alt={`${experience.company} logosu`} width={160} height={80} unoptimized />
       ) : null}

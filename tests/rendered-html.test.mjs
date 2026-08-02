@@ -55,6 +55,7 @@ test("server-renders the professional CV portfolio", async () => {
   assert.match(html, /alt="Fimple logosu"/);
   assert.match(html, /alt="Dgpays logosu"/);
   assert.match(html, /alt="Softtech logosu"/);
+  assert.match(html, /alt="Upenerji logosu"/);
   assert.match(html, /Sertifikalar/);
   assert.match(html, /GNO/);
   assert.match(html, /©[\s\S]*2026[\s\S]*Hüseyin Emre Çevik/);
@@ -87,6 +88,7 @@ test("ships local logo and PDF assets", async () => {
     access(new URL("../public/brand/fimple.png", import.meta.url)),
     access(new URL("../public/brand/dgpays.svg", import.meta.url)),
     access(new URL("../public/brand/softtech.svg", import.meta.url)),
+    access(new URL("../public/brand/upenerji.jpg", import.meta.url)),
     access(new URL("../public/profile.jpg", import.meta.url)),
     access(new URL("../public/favicon.svg", import.meta.url)),
   ]);
