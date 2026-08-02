@@ -86,7 +86,7 @@ const experiences: Experience[] = [
     logo: "/brand/dgpays.svg",
     initials: "DG",
     logoTone: "light",
-    period: "04/2023 - 01/2026",
+    period: "01/2023 - 03/2026",
     place: "İstanbul, Türkiye",
     bullets: [
       "Temel bankacılık departmanı altında krediler ekibinde çalıştım.",

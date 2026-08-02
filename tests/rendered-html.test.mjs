@@ -53,7 +53,7 @@ test("server-renders the professional CV portfolio", async () => {
   assert.match(html, /Tera Bank/);
   assert.match(html, /03\/2026 - Devam/);
   assert.match(html, /Dgpays/);
-  assert.match(html, /04\/2023 - 01\/2026/);
+  assert.match(html, /01\/2023 - 03\/2026/);
   assert.match(html, /Softtech/);
   assert.match(html, /09\/2021 - 01\/2023/);
   assert.match(html, /Upenerji/);
