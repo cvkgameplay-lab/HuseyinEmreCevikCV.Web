@@ -24,6 +24,7 @@ type Experience = {
   company: string;
   logo?: string;
   logoText?: string;
+  logoTone?: "dark" | "light" | "mono";
   period: string;
   place: string;
   bullets: string[];
@@ -34,6 +35,7 @@ const experiences: Experience[] = [
     role: "Software Engineer",
     company: "Fimple",
     logo: "/brand/fimple.png",
+    logoTone: "dark",
     period: "03/2026 - Devam",
     place: "İstanbul, Türkiye",
     bullets: [
@@ -49,6 +51,7 @@ const experiences: Experience[] = [
     role: "Software Engineer",
     company: "Dgpays",
     logo: "/brand/dgpays.svg",
+    logoTone: "light",
     period: "01/2023 - 03/2026",
     place: "İstanbul, Türkiye",
     bullets: [
@@ -64,6 +67,7 @@ const experiences: Experience[] = [
     role: "Software Engineer",
     company: "Softtech",
     logo: "/brand/softtech.svg",
+    logoTone: "light",
     period: "09/2021 - 01/2023",
     place: "İstanbul, Türkiye",
     bullets: [
@@ -78,6 +82,7 @@ const experiences: Experience[] = [
     role: "Full-Stack Engineer",
     company: "Upenerji",
     logoText: "UP",
+    logoTone: "mono",
     period: "11/2020 - 09/2021",
     place: "Konya, Türkiye",
     bullets: [
@@ -141,7 +146,7 @@ export default function Home() {
             {experiences.map((job) => (
               <article className="resume-job" key={`${job.company}-${job.period}`}>
                 <div className="job-topline">
-                  <div className="company-mark">
+                  <div className={`company-mark company-mark--${job.logoTone ?? "light"}`}>
                     {job.logo ? (
                       <img src={job.logo} alt={`${job.company} logosu`} />
                     ) : (
