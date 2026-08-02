@@ -16,22 +16,30 @@ const skills = [
   "OOP",
 ];
 
-const companyLogos = [
+type CompanyLogo = {
+  name: string;
+  src?: string;
+  initials?: string;
+  contrast?: "light";
+};
+
+const companyLogos: CompanyLogo[] = [
   {
-    name: "Fimple",
-    src: "/brand/fimple.png",
-  },
-  {
-    name: "Dgpays",
-    src: "/brand/dgpays.svg",
+    name: "Upenerji",
+    initials: "UP",
   },
   {
     name: "Softtech",
     src: "/brand/softtech.svg",
   },
   {
-    name: "Upenerji",
-    initials: "UP",
+    name: "Dgpays",
+    src: "/brand/dgpays.svg",
+    contrast: "light",
+  },
+  {
+    name: "Fimple",
+    src: "/brand/fimple.png",
   },
 ];
 
@@ -55,6 +63,7 @@ type Experience = {
   place: string;
   period: string;
   tone: string;
+  contrast?: "light";
   bullets: string[];
 };
 
@@ -82,6 +91,7 @@ const experiences: Experience[] = [
     place: "İstanbul, Türkiye",
     period: "01/2023 - 03/2026",
     tone: "past",
+    contrast: "light",
     bullets: [
       "Temel bankacılık departmanında krediler ekibinde çalıştı.",
       "Kredi, tahsilat, teminat, müşteri başvuru, yasal takip ve risk domainleri için bağımsız mikro servisler geliştirdi.",
@@ -121,6 +131,8 @@ const experiences: Experience[] = [
 ];
 
 export default function Home() {
+  const chronologicalExperiences = [...experiences].reverse();
+
   return (
     <main className="site">
       <div className="fixed-stage" aria-hidden="true">
@@ -156,7 +168,10 @@ export default function Home() {
             </div>
             <div className="logo-rail" aria-label="Çalışılan firmalar">
               {companyLogos.map((logo) => (
-                <span className="logo-tile" key={logo.name}>
+                <span
+                  className={`logo-tile ${logo.contrast === "light" ? "light-logo" : ""}`}
+                  key={logo.name}
+                >
                   {logo.src ? (
                     <img src={logo.src} alt={`${logo.name} logosu`} />
                   ) : (
@@ -210,9 +225,9 @@ export default function Home() {
             <h2>Finans ve yazılım odaklı kariyer akışı.</h2>
           </div>
           <div className="timeline-list">
-            {experiences.map((job) => (
+            {chronologicalExperiences.map((job) => (
               <article className="timeline-item" key={`${job.company}-${job.period}`}>
-                <div className="company-logo">
+                <div className={`company-logo ${job.contrast === "light" ? "light-logo" : ""}`}>
                   {job.logo ? (
                     <img src={job.logo} alt={`${job.company} logosu`} />
                   ) : (

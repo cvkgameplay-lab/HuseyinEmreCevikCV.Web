@@ -47,6 +47,8 @@ test("server-renders the modern CV portfolio", async () => {
   assert.match(html, /fixed-stage/);
   assert.match(html, /timeline-list/);
   assert.match(html, /hemrecevik@gmail\.com/);
+  const timelineHtml = html.slice(html.indexOf("timeline-list"));
+  assert.match(timelineHtml, /Upenerji[\s\S]*Softtech[\s\S]*Dgpays[\s\S]*Fimple/);
   assert.doesNotMatch(html, /impact-section/);
   assert.doesNotMatch(html, /experience-slide/);
   assert.doesNotMatch(html, /Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum/);

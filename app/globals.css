@@ -224,6 +224,20 @@ h1 {
   object-fit: contain;
 }
 
+.logo-tile.light-logo,
+.company-logo.light-logo {
+  border-color: rgba(15, 23, 42, 0.12);
+  background: white;
+  box-shadow:
+    0 16px 36px rgba(15, 23, 42, 0.12),
+    inset 0 0 0 1px rgba(15, 23, 42, 0.03);
+}
+
+.logo-tile.light-logo img {
+  max-width: 132px;
+  max-height: 38px;
+}
+
 .logo-tile strong,
 .company-logo strong {
   width: 54px;
@@ -512,6 +526,11 @@ h2 {
   object-fit: contain;
 }
 
+.company-logo.light-logo img {
+  max-width: 152px;
+  max-height: 50px;
+}
+
 .stack-section {
   background: transparent;
 }
@@ -724,6 +743,11 @@ h2 {
     max-height: 30px;
   }
 
+  .logo-tile.light-logo img {
+    max-width: 112px;
+    max-height: 34px;
+  }
+
   .focus-card {
     min-height: auto;
     padding: 22px;
@@ -785,6 +809,11 @@ h2 {
     width: 100%;
     min-height: 64px;
     margin-bottom: 6px;
+  }
+
+  .company-logo.light-logo img {
+    max-width: 150px;
+    max-height: 44px;
   }
 
   .education-summary {
