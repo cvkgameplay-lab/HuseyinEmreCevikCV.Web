@@ -29,17 +29,25 @@ test("server-renders the modern CV portfolio", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Hüseyin Emre Çevik \| Digital Banking Software Engineer<\/title>/i);
+  assert.match(html, /<title>Hüseyin Emre Çevik \| Senior Software Developer<\/title>/i);
+  assert.match(html, /<h1>Hüseyin Emre Çevik<\/h1>/);
+  assert.match(html, /Senior Software Developer/);
+  assert.match(html, /href="\/huseyin-emre-cevik-cv\.pdf"/);
+  assert.match(html, /download/);
   assert.match(html, /Fimple/);
   assert.match(html, /Tera Bank/);
   assert.match(html, /03\/2026 - Devam/);
   assert.match(html, /Dgpays/);
   assert.match(html, /01\/2023 - 03\/2026/);
+  assert.match(html, /src="\/brand\/fimple\.png"/);
+  assert.match(html, /src="\/brand\/dgpays\.svg"/);
+  assert.match(html, /src="\/brand\/softtech\.svg"/);
   assert.match(html, /Experian/);
   assert.match(html, /src="\/profile\.jpg"/);
   assert.match(html, /fixed-stage/);
   assert.match(html, /experience-slide/);
   assert.match(html, /hemrecevik@gmail\.com/);
+  assert.doesNotMatch(html, /Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 
@@ -55,4 +63,13 @@ test("keeps starter assets removed", async () => {
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
+});
+
+test("ships local logo and PDF assets", async () => {
+  await Promise.all([
+    access(new URL("../public/huseyin-emre-cevik-cv.pdf", import.meta.url)),
+    access(new URL("../public/brand/fimple.png", import.meta.url)),
+    access(new URL("../public/brand/dgpays.svg", import.meta.url)),
+    access(new URL("../public/brand/softtech.svg", import.meta.url)),
+  ]);
 });

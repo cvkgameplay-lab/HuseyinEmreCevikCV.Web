@@ -149,6 +149,12 @@ a {
   animation: rise 700ms ease both;
 }
 
+.hero-copy .eyebrow {
+  margin-bottom: 22px;
+  font-size: clamp(1rem, 1.6vw, 1.45rem);
+  color: #111827;
+}
+
 .eyebrow {
   margin: 0 0 16px;
   color: var(--blue);
@@ -166,19 +172,11 @@ p {
 }
 
 h1 {
-  max-width: 970px;
+  max-width: 760px;
   margin-bottom: 26px;
-  font-size: clamp(3.5rem, 8.5vw, 8.8rem);
-  line-height: 0.92;
+  font-size: clamp(4.5rem, 9vw, 9.8rem);
+  line-height: 0.86;
   font-weight: 900;
-}
-
-.hero-copy > p:not(.eyebrow) {
-  max-width: 780px;
-  margin-bottom: 32px;
-  color: #2d3440;
-  font-size: clamp(1.15rem, 2vw, 1.55rem);
-  line-height: 1.62;
 }
 
 .hero-links {
@@ -209,6 +207,47 @@ h1 {
   border-color: var(--blue);
   background: var(--blue);
   color: white;
+}
+
+.download-link {
+  box-shadow: 0 12px 26px rgba(0, 102, 204, 0.28);
+}
+
+.logo-rail {
+  margin-top: clamp(28px, 5vw, 48px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 640px;
+}
+
+.logo-tile {
+  min-height: 74px;
+  padding: 14px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.logo-tile img {
+  max-width: 118px;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+.logo-tile strong,
+.company-logo strong {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #111827;
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
 }
 
 .hero-visual {
@@ -446,10 +485,29 @@ h2 {
 
 .slide-meta {
   display: grid;
-  gap: 8px;
+  gap: 12px;
   color: var(--muted);
   font-size: 0.95rem;
   font-weight: 800;
+}
+
+.company-logo {
+  width: 180px;
+  min-height: 88px;
+  margin-bottom: 16px;
+  padding: 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(5, 5, 5, 0.08);
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 16px 40px rgba(5, 5, 5, 0.08);
+}
+
+.company-logo img {
+  max-width: 138px;
+  max-height: 46px;
+  object-fit: contain;
 }
 
 .slide-copy {
@@ -585,7 +643,7 @@ h2 {
   }
 
   h1 {
-    font-size: 3.25rem;
+    font-size: 4rem;
   }
 
   h2 {
@@ -603,5 +661,19 @@ h2 {
   .contact-panel span {
     width: 100%;
     justify-content: center;
+  }
+
+  .logo-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .logo-tile {
+    min-height: 64px;
+  }
+
+  .company-logo {
+    width: 100%;
+    min-height: 76px;
+    margin-bottom: 6px;
   }
 }

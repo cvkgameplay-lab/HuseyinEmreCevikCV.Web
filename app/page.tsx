@@ -16,6 +16,25 @@ const skills = [
   "OOP",
 ];
 
+const companyLogos = [
+  {
+    name: "Fimple",
+    src: "/brand/fimple.png",
+  },
+  {
+    name: "Dgpays",
+    src: "/brand/dgpays.svg",
+  },
+  {
+    name: "Softtech",
+    src: "/brand/softtech.svg",
+  },
+  {
+    name: "Upenerji",
+    initials: "UP",
+  },
+];
+
 const currentFocus = [
   "Kredi başvurusu",
   "Tahsis",
@@ -28,10 +47,22 @@ const currentFocus = [
   "DMS",
 ];
 
-const experiences = [
+type Experience = {
+  role: string;
+  company: string;
+  logo?: string;
+  logoText?: string;
+  place: string;
+  period: string;
+  tone: string;
+  bullets: string[];
+};
+
+const experiences: Experience[] = [
   {
     role: "Software Engineer",
     company: "Fimple",
+    logo: "/brand/fimple.png",
     place: "İstanbul, Türkiye",
     period: "03/2026 - Devam",
     tone: "current",
@@ -47,6 +78,7 @@ const experiences = [
   {
     role: "Software Engineer",
     company: "Dgpays",
+    logo: "/brand/dgpays.svg",
     place: "İstanbul, Türkiye",
     period: "01/2023 - 03/2026",
     tone: "past",
@@ -61,6 +93,7 @@ const experiences = [
   {
     role: "Software Engineer",
     company: "Softtech",
+    logo: "/brand/softtech.svg",
     place: "İstanbul, Türkiye",
     period: "09/2021 - 01/2023",
     tone: "past",
@@ -75,6 +108,7 @@ const experiences = [
   {
     role: "Full-Stack Engineer",
     company: "Upenerji",
+    logoText: "UP",
     place: "Konya, Türkiye",
     period: "11/2020 - 09/2021",
     tone: "past",
@@ -115,6 +149,9 @@ export default function Home() {
           <a href="#now">Şu an</a>
           <a href="#experience">Deneyim</a>
           <a href="#stack">Stack</a>
+          <a href="/huseyin-emre-cevik-cv.pdf" download>
+            PDF İndir
+          </a>
           <a href="mailto:hemrecevik@gmail.com">İletişim</a>
         </div>
       </nav>
@@ -122,25 +159,34 @@ export default function Home() {
       <section className="hero snap-panel" id="home">
         <div className="screen-card hero-card">
           <div className="hero-copy">
-            <p className="eyebrow">Software Engineer · Digital Banking</p>
-            <h1>Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum.</h1>
-            <p>
-              Fimple bünyesinde Tera Bank için geliştirilen dijital bankacılık
-              platformunda kredi, tahsilat, risk ve üçüncü parti entegrasyonları
-              üzerinde çalışan backend ağırlıklı full-stack yazılım mühendisiyim.
-            </p>
+            <p className="eyebrow">Senior Software Developer</p>
+            <h1>Hüseyin Emre Çevik</h1>
             <div className="hero-links" aria-label="İletişim bağlantıları">
+              <a className="download-link" href="/huseyin-emre-cevik-cv.pdf" download>
+                Güncel PDF CV İndir
+              </a>
               <a href="mailto:hemrecevik@gmail.com">hemrecevik@gmail.com</a>
               <a href="tel:+905414981116">+90 541 498 1116</a>
               <span>Gölcük / Kocaeli</span>
+            </div>
+            <div className="logo-rail" aria-label="Çalışılan firmalar">
+              {companyLogos.map((logo) => (
+                <span className="logo-tile" key={logo.name}>
+                  {logo.src ? (
+                    <img src={logo.src} alt={`${logo.name} logosu`} />
+                  ) : (
+                    <strong>{logo.initials}</strong>
+                  )}
+                </span>
+              ))}
             </div>
           </div>
 
           <div className="hero-visual" aria-label="Profil özeti">
             <img src="/profile.jpg" alt="Hüseyin Emre Çevik portre fotoğrafı" />
             <div className="visual-caption">
-              <span>Current</span>
-              <strong>Fimple · Tera Bank platformu</strong>
+              <span>Current Role</span>
+              <strong>Senior Developer · Fimple</strong>
             </div>
           </div>
         </div>
@@ -197,6 +243,13 @@ export default function Home() {
         >
           <div className="screen-card slide-card">
             <div className="slide-meta">
+              <div className="company-logo">
+                {job.logo ? (
+                  <img src={job.logo} alt={`${job.company} logosu`} />
+                ) : (
+                  <strong>{job.logoText}</strong>
+                )}
+              </div>
               <span>{job.period}</span>
               <span>{job.place}</span>
             </div>
@@ -235,6 +288,9 @@ export default function Home() {
             <p>Bilgisayar Mühendisliği · 2016 - 2020 · GNO 3.04</p>
           </div>
           <div className="contact-panel">
+            <a href="/huseyin-emre-cevik-cv.pdf" download>
+              Güncel PDF CV İndir
+            </a>
             <a href="mailto:hemrecevik@gmail.com">Mail gönder</a>
             <span>Türkçe, İngilizce</span>
             <span>Askerlik tamamlandı · B sınıfı ehliyet</span>

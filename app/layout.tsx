@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Hüseyin Emre Çevik | Digital Banking Software Engineer",
+  title: "Hüseyin Emre Çevik | Senior Software Developer",
   description:
-    "Fimple bünyesinde dijital bankacılık platformları, kredi süreçleri ve entegrasyonlar üzerinde çalışan software engineer.",
+    "Fimple bünyesinde dijital bankacılık platformları, kredi süreçleri ve entegrasyonlar üzerinde çalışan senior software developer.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
