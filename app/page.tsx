@@ -1,42 +1,80 @@
-const skills = [
-  "C#",
-  ".NET",
-  ".NET 8",
-  "Java",
-  "JavaScript",
-  "PostgreSQL",
-  "MSSQL",
-  "React",
-  "jQuery",
-  "Git",
-  "TFS",
-  "Camunda BPM",
-  "Unit Testing",
-  "OOP",
-  "Microservices",
-  "Frontend",
-  "Backend",
-  "Full-Stack",
-];
+import Image from "next/image";
+
+type SkillCategory = {
+  title: string;
+  items: string[];
+};
 
 type Experience = {
   role: string;
   company: string;
   logo?: string;
-  logoText?: string;
-  logoTone?: "dark" | "light" | "mono";
+  initials: string;
+  logoTone: "dark" | "light" | "mono";
   period: string;
   place: string;
   bullets: string[];
 };
+
+type ContactItem = {
+  label: string;
+  value: string;
+  href?: string;
+  icon: "phone" | "mail" | "location" | "user";
+};
+
+const contactItems: ContactItem[] = [
+  {
+    label: "Telefon",
+    value: "+90 541 498 1116",
+    href: "tel:+905414981116",
+    icon: "phone",
+  },
+  {
+    label: "E-posta",
+    value: "hemrecevik@gmail.com",
+    href: "mailto:hemrecevik@gmail.com",
+    icon: "mail",
+  },
+  {
+    label: "Konum",
+    value: "Gölcük / Kocaeli",
+    icon: "location",
+  },
+  {
+    label: "Kullanıcı adı",
+    value: "hemrecevik",
+    icon: "user",
+  },
+];
+
+const skillCategories: SkillCategory[] = [
+  {
+    title: "Backend",
+    items: ["C#", ".NET", ".NET 8", "Java", "Backend", "OOP", "Microservices"],
+  },
+  {
+    title: "Frontend",
+    items: ["JavaScript", "React", "jQuery", "Frontend"],
+  },
+  {
+    title: "Database",
+    items: ["PostgreSQL", "MSSQL"],
+  },
+  {
+    title: "Tools & Practices",
+    items: ["Git", "TFS", "Camunda BPM", "Unit Testing", "Full-Stack"],
+  },
+];
 
 const experiences: Experience[] = [
   {
     role: "Software Engineer",
     company: "Fimple",
     logo: "/brand/fimple.png",
+    initials: "FI",
     logoTone: "dark",
-    period: "03/2026 - Devam",
+    period: "Mart 2026 - Günümüz",
     place: "İstanbul, Türkiye",
     bullets: [
       "Fimple bünyesinde Tera Bank müşterisine özel geliştirilen dijital bankacılık platformunda görev alıyorum.",
@@ -51,8 +89,9 @@ const experiences: Experience[] = [
     role: "Software Engineer",
     company: "Dgpays",
     logo: "/brand/dgpays.svg",
+    initials: "DG",
     logoTone: "light",
-    period: "01/2023 - 03/2026",
+    period: "Ocak 2023 - Mart 2026",
     place: "İstanbul, Türkiye",
     bullets: [
       "Temel bankacılık departmanı altında krediler ekibinde çalıştım.",
@@ -67,8 +106,9 @@ const experiences: Experience[] = [
     role: "Software Engineer",
     company: "Softtech",
     logo: "/brand/softtech.svg",
-    logoTone: "light",
-    period: "09/2021 - 01/2023",
+    initials: "ST",
+    logoTone: "dark",
+    period: "Eylül 2021 - Ocak 2023",
     place: "İstanbul, Türkiye",
     bullets: [
       "Sermaye piyasaları alım satım sistemleri departmanı altında alım-satım ve risk kontrol sistemleri biriminde çalıştım.",
@@ -81,9 +121,9 @@ const experiences: Experience[] = [
   {
     role: "Full-Stack Engineer",
     company: "Upenerji",
-    logoText: "UP",
+    initials: "UP",
     logoTone: "mono",
-    period: "11/2020 - 09/2021",
+    period: "Kasım 2020 - Eylül 2021",
     place: "Konya, Türkiye",
     bullets: [
       "Enerji sektöründeki firmalara danışmanlık ve yazılım hizmeti verdim.",
@@ -93,127 +133,223 @@ const experiences: Experience[] = [
   },
 ];
 
-const personalDetails = [
-  ["Doğum Tarihi", "14.08.1998"],
-  ["Medeni Durum", "Evli"],
-  ["Askerlik", "Tamamlandı"],
-  ["Adres", "Gölcük / Kocaeli"],
-  ["Ehliyet", "B Sınıfı"],
-  ["Dil", "Türkçe, İngilizce"],
+const certificates = [
+  "Yüksek Onur Belgesi - Konya Teknik Üniversitesi, 12/2019",
+  "Yüksek Onur Belgesi - Konya Teknik Üniversitesi, 06/2020",
 ];
 
-const achievements = [
-  "GNO: 3.04",
-  "Yüksek Onur Belgesi: Konya Teknik Üniversitesi, 12/2019",
-  "Yüksek Onur Belgesi: Konya Teknik Üniversitesi, 06/2020",
-];
+const currentYear = new Date().getFullYear();
 
 export default function Home() {
   return (
-    <main className="resume-stage">
-      <div className="resume-actions" aria-label="CV işlemleri">
-        <a href="/huseyin-emre-cevik-cv.pdf" download>
-          PDF İndir
-        </a>
-        <a href="mailto:hemrecevik@gmail.com">Mail Gönder</a>
-      </div>
+    <main className="portfolio-page">
+      <div className="portfolio-shell">
+        <ProfilePanel />
 
-      <article className="resume-sheet" aria-label="Hüseyin Emre Çevik CV">
-        <header className="resume-hero">
-          <img src="/profile.jpg" alt="Hüseyin Emre Çevik portre fotoğrafı" />
-          <div>
-            <h1>Hüseyin Emre Çevik</h1>
-            <p>Senior Software Developer</p>
-            <nav aria-label="İletişim bilgileri">
-              <a href="tel:+905414981116">+90 541 498 1116</a>
-              <a href="mailto:hemrecevik@gmail.com">hemrecevik@gmail.com</a>
-              <span>Gölcük / Kocaeli</span>
-              <span>hemrecevik</span>
-            </nav>
-          </div>
-        </header>
+        <div className="content-column">
+          <Section eyebrow="Kariyer" title="Deneyim">
+            <div className="timeline" aria-label="İş deneyimleri">
+              {experiences.map((experience) => (
+                <ExperienceCard experience={experience} key={`${experience.company}-${experience.period}`} />
+              ))}
+            </div>
+          </Section>
 
-        <Section title="Yetkinlikler">
-          <div className="skill-row">
-            {skills.map((skill) => (
-              <span key={skill}>{skill}</span>
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Deneyimler">
-          <div className="experience-stack">
-            {experiences.map((job) => (
-              <article className="resume-job" key={`${job.company}-${job.period}`}>
-                <div className="job-topline">
-                  <div className={`company-mark company-mark--${job.logoTone ?? "light"}`}>
-                    {job.logo ? (
-                      <img src={job.logo} alt={`${job.company} logosu`} />
-                    ) : (
-                      <strong>{job.logoText}</strong>
-                    )}
-                  </div>
-                  <h3>{job.role}</h3>
-                  <strong>{job.company}</strong>
-                  <span>{job.place}</span>
-                  <time>{job.period}</time>
-                </div>
-                <ul>
-                  {job.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </Section>
-
-        <Section title="Eğitim">
-          <div className="education-grid">
-            <strong>Mühendislik Fakültesi</strong>
-            <span>Konya Teknik Üniversitesi</span>
-            <span>Konya, Türkiye</span>
-            <time>2016 - 2020</time>
-            <p>Bilgisayar Mühendisliği</p>
-          </div>
-        </Section>
-
-        <Section title="Kişisel Bilgiler">
-          <dl className="detail-grid">
-            {personalDetails.map(([label, value]) => (
-              <div key={label}>
-                <dt>{label}</dt>
-                <dd>{value}</dd>
+          <Section eyebrow="Akademik" title="Eğitim">
+            <article className="info-card education-card">
+              <div>
+                <p className="card-kicker">Mühendislik Fakültesi</p>
+                <h3>Konya Teknik Üniversitesi</h3>
+                <p>Bilgisayar Mühendisliği</p>
               </div>
-            ))}
-          </dl>
-        </Section>
+              <dl>
+                <div>
+                  <dt>Konum</dt>
+                  <dd>Konya, Türkiye</dd>
+                </div>
+                <div>
+                  <dt>Tarih</dt>
+                  <dd>2016 - 2020</dd>
+                </div>
+                <div>
+                  <dt>GNO</dt>
+                  <dd>3.04</dd>
+                </div>
+              </dl>
+            </article>
+          </Section>
 
-        <Section title="Diğerleri">
-          <ul className="compact-list">
-            {achievements.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </Section>
-      </article>
+          <Section eyebrow="Belgeler" title="Sertifikalar">
+            <div className="certificate-grid">
+              {certificates.map((certificate) => (
+                <article className="info-card certificate-card" key={certificate}>
+                  <h3>{certificate.split(" - ")[0]}</h3>
+                  <p>{certificate.split(" - ")[1]}</p>
+                </article>
+              ))}
+            </div>
+          </Section>
+
+          <Section eyebrow="Profil" title="Ek Bilgiler">
+            <article className="info-card simple-details">
+              <div>
+                <span>Konum</span>
+                <strong>Gölcük / Kocaeli</strong>
+              </div>
+              <div>
+                <span>Diller</span>
+                <strong>Türkçe, İngilizce</strong>
+              </div>
+            </article>
+          </Section>
+
+          <footer className="site-footer">© {currentYear} Hüseyin Emre Çevik</footer>
+        </div>
+      </div>
     </main>
   );
 }
 
+function ProfilePanel() {
+  return (
+    <header className="profile-panel">
+      <div className="profile-media">
+        <Image
+          src="/profile.jpg"
+          alt="Hüseyin Emre Çevik profil fotoğrafı"
+          width={120}
+          height={120}
+          priority
+          unoptimized
+        />
+      </div>
+
+      <div className="profile-heading">
+        <p className="availability">Senior Software Developer</p>
+        <h1>
+          <span>Hüseyin Emre</span>
+          <span>Çevik</span>
+        </h1>
+      </div>
+
+      <address className="contact-list" aria-label="İletişim bilgileri">
+        {contactItems.map((item) => (
+          <ContactRow item={item} key={item.label} />
+        ))}
+      </address>
+
+      <div className="action-group" aria-label="CV aksiyonları">
+        <a className="primary-action" href="/huseyin-emre-cevik-cv.pdf" download>
+          PDF İndir
+        </a>
+        <a className="secondary-action" href="mailto:hemrecevik@gmail.com">
+          Mail Gönder
+        </a>
+      </div>
+
+      <section className="skills-panel" aria-labelledby="skills-title">
+        <h2 id="skills-title">Yetenekler</h2>
+        <div className="skill-groups">
+          {skillCategories.map((category) => (
+            <div className="skill-group" key={category.title}>
+              <h3>{category.title}</h3>
+              <div className="chip-list">
+                {category.items.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </header>
+  );
+}
+
+function ContactRow({ item }: Readonly<{ item: ContactItem }>) {
+  const content = (
+    <>
+      <Icon name={item.icon} />
+      <span>
+        <small>{item.label}</small>
+        <strong>{item.value}</strong>
+      </span>
+    </>
+  );
+
+  if (item.href) {
+    return (
+      <a href={item.href} className="contact-row">
+        {content}
+      </a>
+    );
+  }
+
+  return <div className="contact-row">{content}</div>;
+}
+
 function Section({
+  eyebrow,
   title,
   children,
 }: Readonly<{
+  eyebrow: string;
   title: string;
   children: React.ReactNode;
 }>) {
+  const titleId = `${title.toLocaleLowerCase("tr-TR").replace(/\s+/g, "-")}-title`;
+
   return (
-    <section className="resume-section">
-      <h2>
-        <span>{title}</span>
-      </h2>
+    <section className="content-section" aria-labelledby={titleId}>
+      <div className="section-heading">
+        <p>{eyebrow}</p>
+        <h2 id={titleId}>{title}</h2>
+      </div>
       {children}
     </section>
+  );
+}
+
+function ExperienceCard({ experience }: Readonly<{ experience: Experience }>) {
+  return (
+    <article className="experience-card">
+      <div className="experience-header">
+        <CompanyLogo experience={experience} />
+        <div className="experience-title">
+          <p>{experience.company}</p>
+          <h3>{experience.role}</h3>
+        </div>
+      </div>
+
+      <div className="experience-meta" aria-label={`${experience.company} detayları`}>
+        <span>{experience.place}</span>
+        <time>{experience.period}</time>
+      </div>
+
+      <ul>
+        {experience.bullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+function CompanyLogo({ experience }: Readonly<{ experience: Experience }>) {
+  return (
+    <div className={`company-logo company-logo--${experience.logoTone}`} aria-hidden={experience.logo ? undefined : true}>
+      <span className="logo-fallback">{experience.initials}</span>
+      {experience.logo ? (
+        <Image src={experience.logo} alt={`${experience.company} logosu`} width={160} height={80} unoptimized />
+      ) : null}
+    </div>
+  );
+}
+
+function Icon({ name }: Readonly<{ name: ContactItem["icon"] }>) {
+  return (
+    <span className={`contact-icon contact-icon--${name}`} aria-hidden="true">
+      <span />
+    </span>
   );
 }

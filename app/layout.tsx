@@ -2,9 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://huseyin-emre-cevik-cv.gizemgbt1.chatgpt.site"),
   title: "Hüseyin Emre Çevik | Senior Software Developer",
   description:
-    "Finans ve bankacılık domainlerinde .NET, mikro servisler, kredi süreçleri ve entegrasyonlar üzerinde çalışan senior software developer.",
+    "Finans ve bankacılık domainlerinde .NET, mikro servisler, kredi süreçleri ve entegrasyonlar üzerinde çalışan Senior Software Developer.",
+  openGraph: {
+    title: "Hüseyin Emre Çevik | Senior Software Developer",
+    description:
+      "Finans ve bankacılık domainlerinde .NET, mikro servisler, kredi süreçleri ve entegrasyonlar üzerinde çalışan Senior Software Developer.",
+    type: "profile",
+    locale: "tr_TR",
+    url: "/",
+    siteName: "Hüseyin Emre Çevik CV",
+  },
+  twitter: {
+    card: "summary",
+    title: "Hüseyin Emre Çevik | Senior Software Developer",
+    description:
+      "Finans ve bankacılık domainlerinde .NET, mikro servisler, kredi süreçleri ve entegrasyonlar üzerinde çalışan Senior Software Developer.",
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

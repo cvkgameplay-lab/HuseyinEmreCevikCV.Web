@@ -23,39 +23,46 @@ async function render() {
   );
 }
 
-test("server-renders the modern CV portfolio", async () => {
+test("server-renders the professional CV portfolio", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   assert.match(html, /<title>Hüseyin Emre Çevik \| Senior Software Developer<\/title>/i);
-  assert.match(html, /<h1>Hüseyin Emre Çevik<\/h1>/);
+  assert.match(html, /<h1><span>Hüseyin Emre<\/span><span>Çevik<\/span><\/h1>/);
   assert.match(html, /Senior Software Developer/);
   assert.match(html, /href="\/huseyin-emre-cevik-cv\.pdf"/);
   assert.match(html, /download/);
+  assert.match(html, /href="tel:\+905414981116"/);
+  assert.match(html, /href="mailto:hemrecevik@gmail\.com"/);
+  assert.match(html, /portfolio-shell/);
+  assert.match(html, /profile-panel/);
+  assert.match(html, /experience-card/);
+  assert.match(html, /Backend/);
+  assert.match(html, /Frontend/);
+  assert.match(html, /Database/);
+  assert.match(html, /Tools &amp; Practices/);
   assert.match(html, /Fimple/);
   assert.match(html, /Tera Bank/);
-  assert.match(html, /03\/2026 - Devam/);
+  assert.match(html, /Mart 2026 - Günümüz/);
   assert.match(html, /Dgpays/);
-  assert.match(html, /01\/2023 - 03\/2026/);
-  assert.match(html, /src="\/brand\/fimple\.png"/);
-  assert.match(html, /src="\/brand\/dgpays\.svg"/);
-  assert.match(html, /src="\/brand\/softtech\.svg"/);
-  assert.match(html, /Experian/);
-  assert.match(html, /src="\/profile\.jpg"/);
-  assert.match(html, /resume-sheet/);
-  assert.match(html, /resume-section/);
-  assert.match(html, /experience-stack/);
-  assert.match(html, /Yetkinlikler/);
-  assert.match(html, /Kişisel Bilgiler/);
-  assert.match(html, /hemrecevik@gmail\.com/);
-  const timelineHtml = html.slice(html.indexOf("experience-stack"));
+  assert.match(html, /Ocak 2023 - Mart 2026/);
+  assert.match(html, /Softtech/);
+  assert.match(html, /Eylül 2021 - Ocak 2023/);
+  assert.match(html, /Upenerji/);
+  assert.match(html, /Kasım 2020 - Eylül 2021/);
+  assert.match(html, /alt="Fimple logosu"/);
+  assert.match(html, /alt="Dgpays logosu"/);
+  assert.match(html, /alt="Softtech logosu"/);
+  assert.match(html, /Sertifikalar/);
+  assert.match(html, /GNO/);
+  assert.match(html, /©[\s\S]*2026[\s\S]*Hüseyin Emre Çevik/);
+
+  const timelineHtml = html.slice(html.indexOf("timeline"));
   assert.match(timelineHtml, /Fimple[\s\S]*Dgpays[\s\S]*Softtech[\s\S]*Upenerji/);
-  assert.doesNotMatch(html, /impact-section/);
-  assert.doesNotMatch(html, /experience-slide/);
-  assert.doesNotMatch(html, /Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum/);
-  assert.doesNotMatch(html, /cv-sidebar|cv-sheet/);
+  assert.doesNotMatch(html, /Doğum Tarihi|Medeni Durum|Askerlik|B Sınıfı/);
+  assert.doesNotMatch(html, /cv-sidebar|cv-sheet|resume-sheet/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 
@@ -69,6 +76,7 @@ test("keeps starter assets removed", async () => {
   assert.doesNotMatch(page, /SkeletonPreview|codex-preview/);
   assert.doesNotMatch(layout, /Starter Project|codex-preview|_sites-preview/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+  assert.match(layout, /openGraph/);
 
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
 });
@@ -79,6 +87,8 @@ test("ships local logo and PDF assets", async () => {
     access(new URL("../public/brand/fimple.png", import.meta.url)),
     access(new URL("../public/brand/dgpays.svg", import.meta.url)),
     access(new URL("../public/brand/softtech.svg", import.meta.url)),
+    access(new URL("../public/profile.jpg", import.meta.url)),
+    access(new URL("../public/favicon.svg", import.meta.url)),
   ]);
 
   const pageCount = pdf.toString("latin1").match(/\/Type\s*\/Page\b/g)?.length ?? 0;
