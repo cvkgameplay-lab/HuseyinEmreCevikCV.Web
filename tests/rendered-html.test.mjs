@@ -45,8 +45,10 @@ test("server-renders the modern CV portfolio", async () => {
   assert.match(html, /Experian/);
   assert.match(html, /src="\/profile\.jpg"/);
   assert.match(html, /fixed-stage/);
-  assert.match(html, /experience-slide/);
+  assert.match(html, /timeline-list/);
   assert.match(html, /hemrecevik@gmail\.com/);
+  assert.doesNotMatch(html, /impact-section/);
+  assert.doesNotMatch(html, /experience-slide/);
   assert.doesNotMatch(html, /Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
@@ -63,6 +65,7 @@ test("keeps starter assets removed", async () => {
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
+  await assert.rejects(access(new URL("../scripts/cv-print.html", import.meta.url)));
 });
 
 test("ships local logo and PDF assets", async () => {

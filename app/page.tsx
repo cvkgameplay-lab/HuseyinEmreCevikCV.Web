@@ -120,21 +120,6 @@ const experiences: Experience[] = [
   },
 ];
 
-const impactAreas = [
-  {
-    title: "Dijital bankacılık",
-    text: "Kredi yaşam döngüsü, risk ve tahsilat süreçlerinde üretim ortamına dokunan servisler.",
-  },
-  {
-    title: "Entegrasyonlar",
-    text: "Experian, Telco, AML, DMS ve finansal servis ekosistemleriyle güvenilir veri akışı.",
-  },
-  {
-    title: "Performans",
-    text: "REST API geliştirme, sorgu optimizasyonu ve mevcut servislerin sürdürülebilir bakımı.",
-  },
-];
-
 export default function Home() {
   return (
     <main className="site">
@@ -218,82 +203,63 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="impact-section snap-panel">
-        <div className="screen-card impact-grid">
-          {impactAreas.map((area) => (
-            <article key={area.title}>
-              <h3>{area.title}</h3>
-              <p>{area.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="experience-section snap-panel" id="experience">
-        <div className="screen-card intro-screen section-intro compact">
-          <p className="eyebrow">Deneyim</p>
-          <h2>Finansal servislerden operasyonel iş uygulamalarına.</h2>
-        </div>
-      </section>
-
-      {experiences.map((job) => (
-        <section
-          className={`experience-slide snap-panel ${job.tone}`}
-          key={`${job.company}-${job.period}`}
-        >
-          <div className="screen-card slide-card">
-            <div className="slide-meta">
-              <div className="company-logo">
-                {job.logo ? (
-                  <img src={job.logo} alt={`${job.company} logosu`} />
-                ) : (
-                  <strong>{job.logoText}</strong>
-                )}
-              </div>
-              <span>{job.period}</span>
-              <span>{job.place}</span>
-            </div>
-            <div className="slide-copy">
-              <p className="eyebrow">{job.role}</p>
-              <h2>{job.company}</h2>
-              <ul>
-                {job.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            </div>
+        <div className="screen-card experience-card">
+          <div className="section-intro compact">
+            <p className="eyebrow">Deneyim</p>
+            <h2>Finans ve yazılım odaklı kariyer akışı.</h2>
           </div>
-        </section>
-      ))}
-
-      <section className="stack-section snap-panel" id="stack">
-        <div className="screen-card stack-card">
-          <div>
-            <p className="eyebrow">Teknik set</p>
-            <h2>.NET, mikro servisler ve bankacılık domainleri çevresinde.</h2>
-          </div>
-          <div className="skill-cloud">
-            {skills.map((skill) => (
-              <span key={skill}>{skill}</span>
+          <div className="timeline-list">
+            {experiences.map((job) => (
+              <article className="timeline-item" key={`${job.company}-${job.period}`}>
+                <div className="company-logo">
+                  {job.logo ? (
+                    <img src={job.logo} alt={`${job.company} logosu`} />
+                  ) : (
+                    <strong>{job.logoText}</strong>
+                  )}
+                </div>
+                <div>
+                  <div className="timeline-head">
+                    <div>
+                      <p className="eyebrow">{job.role}</p>
+                      <h3>{job.company}</h3>
+                    </div>
+                    <span>{job.period}</span>
+                  </div>
+                  <p>{job.bullets[0]}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="education-section snap-panel">
-        <div className="screen-card education-card">
+      <section className="stack-section snap-panel" id="stack">
+        <div className="screen-card stack-card final-card">
           <div>
-            <p className="eyebrow">Eğitim</p>
-            <h2>Konya Teknik Üniversitesi</h2>
-            <p>Bilgisayar Mühendisliği · 2016 - 2020 · GNO 3.04</p>
+            <p className="eyebrow">Teknik set</p>
+            <h2>.NET, mikro servisler ve bankacılık domainleri çevresinde.</h2>
+            <div className="education-summary">
+              <p className="eyebrow">Eğitim</p>
+              <h3>Konya Teknik Üniversitesi</h3>
+              <p>Bilgisayar Mühendisliği · 2016 - 2020 · GNO 3.04</p>
+            </div>
           </div>
-          <div className="contact-panel">
-            <a href="/huseyin-emre-cevik-cv.pdf" download>
-              Güncel PDF CV İndir
-            </a>
-            <a href="mailto:hemrecevik@gmail.com">Mail gönder</a>
-            <span>Türkçe, İngilizce</span>
-            <span>Askerlik tamamlandı · B sınıfı ehliyet</span>
+          <div className="final-column">
+            <div className="skill-cloud">
+              {skills.map((skill) => (
+                <span key={skill}>{skill}</span>
+              ))}
+            </div>
+            <div className="contact-panel">
+              <a href="/huseyin-emre-cevik-cv.pdf" download>
+                Güncel PDF CV İndir
+              </a>
+              <a href="mailto:hemrecevik@gmail.com">Mail gönder</a>
+              <span>Türkçe, İngilizce</span>
+              <span>Askerlik tamamlandı · B sınıfı ehliyet</span>
+            </div>
           </div>
         </div>
       </section>
