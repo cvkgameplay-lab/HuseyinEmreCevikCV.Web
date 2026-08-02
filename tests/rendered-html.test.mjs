@@ -24,6 +24,7 @@ async function render() {
 }
 
 test("server-renders the professional CV portfolio", async () => {
+  const currentYear = new Date().getFullYear();
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -32,33 +33,39 @@ test("server-renders the professional CV portfolio", async () => {
   assert.match(html, /<title>Hüseyin Emre Çevik \| Senior Software Developer<\/title>/i);
   assert.match(html, /<h1><span>Hüseyin Emre<\/span><span>Çevik<\/span><\/h1>/);
   assert.match(html, /Senior Software Developer/);
-  assert.match(html, /href="\/huseyin-emre-cevik-cv\.pdf"/);
-  assert.match(html, /download/);
+  assert.match(html, /href="\/Huseyin-Emre-Cevik-CV\.pdf"/);
+  assert.match(html, /download="Huseyin-Emre-Cevik-CV\.pdf"/);
   assert.match(html, /href="tel:\+905414981116"/);
   assert.match(html, /href="mailto:hemrecevik@gmail\.com"/);
+  assert.doesNotMatch(html, /Kullanıcı adı/);
   assert.match(html, /portfolio-shell/);
   assert.match(html, /profile-panel/);
   assert.match(html, /experience-card/);
+  assert.match(html, /experience-list/);
   assert.match(html, /Backend/);
   assert.match(html, /Frontend/);
   assert.match(html, /Database/);
   assert.match(html, /Tools &amp; Practices/);
+  assert.doesNotMatch(html, /<span>Backend<\/span>/);
+  assert.doesNotMatch(html, /<span>Frontend<\/span>/);
+  assert.doesNotMatch(html, /<span>Full-Stack<\/span>/);
   assert.match(html, /Fimple/);
   assert.match(html, /Tera Bank/);
-  assert.match(html, /Mart 2026 - Günümüz/);
+  assert.match(html, /03\/2026 - Devam/);
   assert.match(html, /Dgpays/);
-  assert.match(html, /Ocak 2023 - Mart 2026/);
+  assert.match(html, /04\/2023 - 01\/2026/);
   assert.match(html, /Softtech/);
-  assert.match(html, /Eylül 2021 - Ocak 2023/);
+  assert.match(html, /09\/2021 - 01\/2023/);
   assert.match(html, /Upenerji/);
-  assert.match(html, /Kasım 2020 - Eylül 2021/);
+  assert.match(html, /11\/2020 - 09\/2021/);
   assert.match(html, /alt="Fimple logosu"/);
   assert.match(html, /alt="Dgpays logosu"/);
   assert.match(html, /alt="Softtech logosu"/);
   assert.match(html, /alt="Upenerji logosu"/);
-  assert.match(html, /Sertifikalar/);
+  assert.match(html, /Başarılar ve Belgeler/);
   assert.match(html, /GNO/);
-  assert.match(html, /©[\s\S]*2026[\s\S]*Hüseyin Emre Çevik/);
+  assert.match(html, new RegExp(`©[\\s\\S]*${currentYear}[\\s\\S]*Hüseyin Emre Çevik`));
+  assert.doesNotMatch(html, /©[\s\S]*1970[\s\S]*Hüseyin Emre Çevik/);
 
   const timelineHtml = html.slice(html.indexOf("timeline"));
   assert.match(timelineHtml, /Fimple[\s\S]*Dgpays[\s\S]*Softtech[\s\S]*Upenerji/);
@@ -84,7 +91,7 @@ test("keeps starter assets removed", async () => {
 
 test("ships local logo and PDF assets", async () => {
   const [pdf] = await Promise.all([
-    readFile(new URL("../public/huseyin-emre-cevik-cv.pdf", import.meta.url)),
+    readFile(new URL("../public/Huseyin-Emre-Cevik-CV.pdf", import.meta.url)),
     access(new URL("../public/brand/fimple.png", import.meta.url)),
     access(new URL("../public/brand/dgpays.svg", import.meta.url)),
     access(new URL("../public/brand/softtech.svg", import.meta.url)),

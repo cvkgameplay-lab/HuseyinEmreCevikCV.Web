@@ -20,7 +20,7 @@ type ContactItem = {
   label: string;
   value: string;
   href?: string;
-  icon: "phone" | "mail" | "location" | "user";
+  icon: "phone" | "mail" | "location";
 };
 
 const contactItems: ContactItem[] = [
@@ -41,21 +41,16 @@ const contactItems: ContactItem[] = [
     value: "Gölcük / Kocaeli",
     icon: "location",
   },
-  {
-    label: "Kullanıcı adı",
-    value: "hemrecevik",
-    icon: "user",
-  },
 ];
 
 const skillCategories: SkillCategory[] = [
   {
     title: "Backend",
-    items: ["C#", ".NET", ".NET 8", "Java", "Backend", "OOP", "Microservices"],
+    items: ["C#", ".NET", ".NET 8", "Java", "OOP", "Microservices"],
   },
   {
     title: "Frontend",
-    items: ["JavaScript", "React", "jQuery", "Frontend"],
+    items: ["JavaScript", "React", "jQuery"],
   },
   {
     title: "Database",
@@ -63,7 +58,7 @@ const skillCategories: SkillCategory[] = [
   },
   {
     title: "Tools & Practices",
-    items: ["Git", "TFS", "Camunda BPM", "Unit Testing", "Full-Stack"],
+    items: ["Git", "TFS", "Camunda BPM", "Unit Testing"],
   },
 ];
 
@@ -74,7 +69,7 @@ const experiences: Experience[] = [
     logo: "/brand/fimple.png",
     initials: "FI",
     logoTone: "light",
-    period: "Mart 2026 - Günümüz",
+    period: "03/2026 - Devam",
     place: "İstanbul, Türkiye",
     bullets: [
       "Fimple bünyesinde Tera Bank müşterisine özel geliştirilen dijital bankacılık platformunda görev alıyorum.",
@@ -91,7 +86,7 @@ const experiences: Experience[] = [
     logo: "/brand/dgpays.svg",
     initials: "DG",
     logoTone: "light",
-    period: "Ocak 2023 - Mart 2026",
+    period: "04/2023 - 01/2026",
     place: "İstanbul, Türkiye",
     bullets: [
       "Temel bankacılık departmanı altında krediler ekibinde çalıştım.",
@@ -108,7 +103,7 @@ const experiences: Experience[] = [
     logo: "/brand/softtech.svg",
     initials: "ST",
     logoTone: "dark",
-    period: "Eylül 2021 - Ocak 2023",
+    period: "09/2021 - 01/2023",
     place: "İstanbul, Türkiye",
     bullets: [
       "Sermaye piyasaları alım satım sistemleri departmanı altında alım-satım ve risk kontrol sistemleri biriminde çalıştım.",
@@ -124,7 +119,7 @@ const experiences: Experience[] = [
     logo: "/brand/upenerji.jpg",
     initials: "UP",
     logoTone: "upenerji",
-    period: "Kasım 2020 - Eylül 2021",
+    period: "11/2020 - 09/2021",
     place: "Konya, Türkiye",
     bullets: [
       "Enerji sektöründeki firmalara danışmanlık ve yazılım hizmeti verdim.",
@@ -139,9 +134,9 @@ const certificates = [
   "Yüksek Onur Belgesi - Konya Teknik Üniversitesi, 06/2020",
 ];
 
-const currentYear = new Date().getFullYear();
-
 export default function Home() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <main className="portfolio-page">
       <div className="portfolio-shell">
@@ -159,9 +154,9 @@ export default function Home() {
           <Section eyebrow="Akademik" title="Eğitim">
             <article className="info-card education-card">
               <div>
-                <p className="card-kicker">Mühendislik Fakültesi</p>
                 <h3>Konya Teknik Üniversitesi</h3>
                 <p>Bilgisayar Mühendisliği</p>
+                <p className="card-kicker">Mühendislik Fakültesi</p>
               </div>
               <dl>
                 <div>
@@ -180,7 +175,7 @@ export default function Home() {
             </article>
           </Section>
 
-          <Section eyebrow="Belgeler" title="Sertifikalar">
+          <Section eyebrow="Belgeler" title="Başarılar ve Belgeler">
             <div className="certificate-grid">
               {certificates.map((certificate) => (
                 <article className="info-card certificate-card" key={certificate}>
@@ -240,7 +235,7 @@ function ProfilePanel() {
       </address>
 
       <div className="action-group" aria-label="CV aksiyonları">
-        <a className="primary-action" href="/huseyin-emre-cevik-cv.pdf" download>
+        <a className="primary-action" href="/Huseyin-Emre-Cevik-CV.pdf" download="Huseyin-Emre-Cevik-CV.pdf">
           PDF İndir
         </a>
         <a className="secondary-action" href="mailto:hemrecevik@gmail.com">
@@ -327,7 +322,7 @@ function ExperienceCard({ experience }: Readonly<{ experience: Experience }>) {
         <time>{experience.period}</time>
       </div>
 
-      <ul>
+      <ul className="experience-list">
         {experience.bullets.map((bullet) => (
           <li key={bullet}>{bullet}</li>
         ))}
