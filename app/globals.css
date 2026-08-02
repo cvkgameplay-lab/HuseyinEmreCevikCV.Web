@@ -28,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: #0d0f14;
   color: var(--ink);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -39,7 +39,52 @@ a {
 }
 
 .site {
+  position: relative;
   min-height: 100vh;
+}
+
+.fixed-stage {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  padding: clamp(22px, 5vw, 72px);
+  display: grid;
+  align-content: end;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(0, 102, 204, 0.38), transparent 38%),
+    linear-gradient(180deg, #10131a 0%, #171b24 46%, #0b0d12 100%);
+  background-size: 78px 78px, 78px 78px, auto, auto;
+  color: rgba(255, 255, 255, 0.13);
+  overflow: hidden;
+}
+
+.fixed-stage::before {
+  content: "";
+  position: absolute;
+  right: clamp(18px, 8vw, 130px);
+  top: 50%;
+  width: min(38vw, 520px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.fixed-stage span {
+  max-width: 1100px;
+  font-size: clamp(4.4rem, 15vw, 15rem);
+  line-height: 0.82;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.fixed-stage strong {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.28);
+  font-size: clamp(1rem, 2vw, 1.45rem);
 }
 
 .topbar {
@@ -51,13 +96,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(5, 5, 5, 0.08);
-  background: rgba(247, 247, 245, 0.86);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 15, 20, 0.62);
   backdrop-filter: blur(18px);
 }
 
 .topbar a {
-  color: #1d1d1f;
+  color: rgba(255, 255, 255, 0.88);
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -75,10 +120,29 @@ a {
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.55fr);
   gap: clamp(36px, 6vw, 86px);
   align-items: center;
-  background:
-    linear-gradient(180deg, #ffffff 0%, #f7f7f5 58%, #eceff3 100%);
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+.screen-card {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: clamp(24px, 4vw, 42px);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(22px);
+}
+
+.hero-card,
+.focus-screen,
+.stack-card,
+.education-card {
+  padding: clamp(24px, 5vw, 58px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.52fr);
+  gap: clamp(28px, 5vw, 74px);
+  align-items: center;
 }
 
 .hero-copy {
@@ -112,7 +176,7 @@ h1 {
 .hero-copy > p:not(.eyebrow) {
   max-width: 780px;
   margin-bottom: 32px;
-  color: #31343a;
+  color: #2d3440;
   font-size: clamp(1.15rem, 2vw, 1.55rem);
   line-height: 1.62;
 }
@@ -165,9 +229,7 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background:
-    linear-gradient(145deg, rgba(0, 102, 204, 0.18), transparent 42%),
-    #111318;
+  background: #111318;
   box-shadow: 0 34px 90px rgba(5, 5, 5, 0.22);
 }
 
@@ -252,7 +314,7 @@ h2 {
 }
 
 .focus-card {
-  min-height: 420px;
+  min-height: 360px;
   padding: clamp(28px, 5vw, 52px);
   display: grid;
   align-content: end;
@@ -306,8 +368,7 @@ h2 {
   min-height: calc(100vh - 58px);
   padding: clamp(54px, 7vw, 90px) clamp(20px, 5vw, 72px);
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
   align-content: center;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -316,6 +377,13 @@ h2 {
   animation: panel-reveal both ease;
   animation-timeline: --panel;
   animation-range: entry 8% cover 34%;
+}
+
+.impact-grid {
+  padding: clamp(18px, 3vw, 28px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .impact-section article {
@@ -340,7 +408,6 @@ h2 {
 }
 
 .experience-section {
-  background: #111318;
   color: white;
 }
 
@@ -352,11 +419,9 @@ h2 {
   min-height: calc(100vh - 58px);
   padding: clamp(54px, 7vw, 90px) clamp(20px, 5vw, 72px);
   display: grid;
-  grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
-  gap: clamp(28px, 6vw, 96px);
+  grid-template-columns: 1fr;
   align-items: center;
-  color: white;
-  background: #111318;
+  color: var(--ink);
   scroll-snap-align: start;
   scroll-snap-stop: always;
   view-timeline-name: --panel;
@@ -366,16 +431,23 @@ h2 {
   animation-range: entry 8% cover 34%;
 }
 
-.experience-slide.current {
-  background:
-    radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.28), transparent 34%),
-    #111318;
+.intro-screen {
+  padding: clamp(28px, 5vw, 60px);
+  color: var(--ink);
+}
+
+.slide-card {
+  padding: clamp(26px, 5vw, 60px);
+  display: grid;
+  grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 96px);
+  align-items: center;
 }
 
 .slide-meta {
   display: grid;
   gap: 8px;
-  color: #aeb6c2;
+  color: var(--muted);
   font-size: 0.95rem;
   font-weight: 800;
 }
@@ -387,7 +459,7 @@ h2 {
 .slide-copy ul {
   margin: 0;
   padding-left: 20px;
-  color: #e8ebef;
+  color: #2d3440;
   font-size: clamp(1rem, 1.45vw, 1.18rem);
   line-height: 1.65;
 }
@@ -397,11 +469,7 @@ h2 {
 }
 
 .stack-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.85fr);
-  gap: clamp(28px, 5vw, 70px);
-  align-items: center;
-  background: white;
+  background: transparent;
 }
 
 .skill-cloud {
@@ -411,11 +479,7 @@ h2 {
 }
 
 .education-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(290px, 0.5fr);
-  gap: 32px;
-  align-items: end;
-  background: var(--paper);
+  background: transparent;
 }
 
 .education-section h2 {
@@ -481,11 +545,15 @@ h2 {
   }
 
   .hero,
+  .hero-card,
   .focus-grid,
-  .stack-section,
-  .education-section,
+  .focus-screen,
+  .stack-card,
+  .education-card,
+  .slide-card,
   .experience-slide,
-  .impact-section {
+  .impact-section,
+  .impact-grid {
     grid-template-columns: 1fr;
   }
 

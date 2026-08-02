@@ -37,6 +37,8 @@ test("server-renders the modern CV portfolio", async () => {
   assert.match(html, /01\/2023 - 03\/2026/);
   assert.match(html, /Experian/);
   assert.match(html, /src="\/profile\.jpg"/);
+  assert.match(html, /fixed-stage/);
+  assert.match(html, /experience-slide/);
   assert.match(html, /hemrecevik@gmail\.com/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });

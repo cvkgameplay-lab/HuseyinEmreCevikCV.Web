@@ -104,6 +104,11 @@ const impactAreas = [
 export default function Home() {
   return (
     <main className="site">
+      <div className="fixed-stage" aria-hidden="true">
+        <span>Digital Banking</span>
+        <strong>Microservices · API · Risk · Credit</strong>
+      </div>
+
       <nav className="topbar" aria-label="Sayfa bölümleri">
         <a href="#home">Hüseyin Emre Çevik</a>
         <div>
@@ -114,66 +119,72 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="hero" id="home">
-        <div className="hero-copy">
-          <p className="eyebrow">Software Engineer · Digital Banking</p>
-          <h1>Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum.</h1>
-          <p>
-            Fimple bünyesinde Tera Bank için geliştirilen dijital bankacılık
-            platformunda kredi, tahsilat, risk ve üçüncü parti entegrasyonları
-            üzerinde çalışan backend ağırlıklı full-stack yazılım mühendisiyim.
-          </p>
-          <div className="hero-links" aria-label="İletişim bağlantıları">
-            <a href="mailto:hemrecevik@gmail.com">hemrecevik@gmail.com</a>
-            <a href="tel:+905414981116">+90 541 498 1116</a>
-            <span>Gölcük / Kocaeli</span>
-          </div>
-        </div>
-
-        <div className="hero-visual" aria-label="Profil özeti">
-          <img src="/profile.jpg" alt="Hüseyin Emre Çevik portre fotoğrafı" />
-          <div className="visual-caption">
-            <span>Current</span>
-            <strong>Fimple · Tera Bank platformu</strong>
-          </div>
-        </div>
-      </section>
-
-      <section className="focus-section" id="now">
-        <div className="section-intro">
-          <p className="eyebrow">Şu an</p>
-          <h2>Fimple’da dijital bankacılık platformu geliştiriyorum.</h2>
-        </div>
-        <div className="focus-grid">
-          <article className="focus-card main-focus">
-            <span>03/2026 - Devam</span>
-            <h3>Software Engineer · Fimple</h3>
+      <section className="hero snap-panel" id="home">
+        <div className="screen-card hero-card">
+          <div className="hero-copy">
+            <p className="eyebrow">Software Engineer · Digital Banking</p>
+            <h1>Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum.</h1>
             <p>
-              Tera Bank müşterisine özel geliştirilen platformda analiz,
-              geliştirme, test ve canlıya alma süreçlerine katkı sağlıyorum.
-              Üretim ortamında karşılaşılan hataların giderilmesi ve mevcut
-              servislerin bakımı da günlük sorumluluk alanımda.
+              Fimple bünyesinde Tera Bank için geliştirilen dijital bankacılık
+              platformunda kredi, tahsilat, risk ve üçüncü parti entegrasyonları
+              üzerinde çalışan backend ağırlıklı full-stack yazılım mühendisiyim.
             </p>
-          </article>
-          <div className="focus-tags" aria-label="Fimple çalışma alanları">
-            {currentFocus.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
+            <div className="hero-links" aria-label="İletişim bağlantıları">
+              <a href="mailto:hemrecevik@gmail.com">hemrecevik@gmail.com</a>
+              <a href="tel:+905414981116">+90 541 498 1116</a>
+              <span>Gölcük / Kocaeli</span>
+            </div>
+          </div>
+
+          <div className="hero-visual" aria-label="Profil özeti">
+            <img src="/profile.jpg" alt="Hüseyin Emre Çevik portre fotoğrafı" />
+            <div className="visual-caption">
+              <span>Current</span>
+              <strong>Fimple · Tera Bank platformu</strong>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="impact-section">
-        {impactAreas.map((area) => (
-          <article key={area.title}>
-            <h3>{area.title}</h3>
-            <p>{area.text}</p>
-          </article>
-        ))}
+      <section className="focus-section snap-panel" id="now">
+        <div className="screen-card focus-screen">
+          <div className="section-intro">
+            <p className="eyebrow">Şu an</p>
+            <h2>Fimple’da dijital bankacılık platformu geliştiriyorum.</h2>
+          </div>
+          <div className="focus-grid">
+            <article className="focus-card main-focus">
+              <span>03/2026 - Devam</span>
+              <h3>Software Engineer · Fimple</h3>
+              <p>
+                Tera Bank müşterisine özel geliştirilen platformda analiz,
+                geliştirme, test ve canlıya alma süreçlerine katkı sağlıyorum.
+                Üretim ortamında karşılaşılan hataların giderilmesi ve mevcut
+                servislerin bakımı da günlük sorumluluk alanımda.
+              </p>
+            </article>
+            <div className="focus-tags" aria-label="Fimple çalışma alanları">
+              {currentFocus.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="impact-section snap-panel">
+        <div className="screen-card impact-grid">
+          {impactAreas.map((area) => (
+            <article key={area.title}>
+              <h3>{area.title}</h3>
+              <p>{area.text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="experience-section snap-panel" id="experience">
-        <div className="section-intro compact">
+        <div className="screen-card intro-screen section-intro compact">
           <p className="eyebrow">Deneyim</p>
           <h2>Finansal servislerden operasyonel iş uygulamalarına.</h2>
         </div>
@@ -184,44 +195,50 @@ export default function Home() {
           className={`experience-slide snap-panel ${job.tone}`}
           key={`${job.company}-${job.period}`}
         >
-          <div className="slide-meta">
-            <span>{job.period}</span>
-            <span>{job.place}</span>
-          </div>
-          <div className="slide-copy">
-            <p className="eyebrow">{job.role}</p>
-            <h2>{job.company}</h2>
-            <ul>
-              {job.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
+          <div className="screen-card slide-card">
+            <div className="slide-meta">
+              <span>{job.period}</span>
+              <span>{job.place}</span>
+            </div>
+            <div className="slide-copy">
+              <p className="eyebrow">{job.role}</p>
+              <h2>{job.company}</h2>
+              <ul>
+                {job.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       ))}
 
-      <section className="stack-section" id="stack">
-        <div>
-          <p className="eyebrow">Teknik set</p>
-          <h2>.NET, mikro servisler ve bankacılık domainleri çevresinde.</h2>
-        </div>
-        <div className="skill-cloud">
-          {skills.map((skill) => (
-            <span key={skill}>{skill}</span>
-          ))}
+      <section className="stack-section snap-panel" id="stack">
+        <div className="screen-card stack-card">
+          <div>
+            <p className="eyebrow">Teknik set</p>
+            <h2>.NET, mikro servisler ve bankacılık domainleri çevresinde.</h2>
+          </div>
+          <div className="skill-cloud">
+            {skills.map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="education-section">
-        <div>
-          <p className="eyebrow">Eğitim</p>
-          <h2>Konya Teknik Üniversitesi</h2>
-          <p>Bilgisayar Mühendisliği · 2016 - 2020 · GNO 3.04</p>
-        </div>
-        <div className="contact-panel">
-          <a href="mailto:hemrecevik@gmail.com">Mail gönder</a>
-          <span>Türkçe, İngilizce</span>
-          <span>Askerlik tamamlandı · B sınıfı ehliyet</span>
+      <section className="education-section snap-panel">
+        <div className="screen-card education-card">
+          <div>
+            <p className="eyebrow">Eğitim</p>
+            <h2>Konya Teknik Üniversitesi</h2>
+            <p>Bilgisayar Mühendisliği · 2016 - 2020 · GNO 3.04</p>
+          </div>
+          <div className="contact-panel">
+            <a href="mailto:hemrecevik@gmail.com">Mail gönder</a>
+            <span>Türkçe, İngilizce</span>
+            <span>Askerlik tamamlandı · B sınıfı ehliyet</span>
+          </div>
         </div>
       </section>
     </main>
