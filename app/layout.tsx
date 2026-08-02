@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://huseyin-emre-cevik-cv.gizemgbt1.chatgpt.site"),
+  metadataBase: new URL("https://huseyinemrecevik.com"),
   title: "Hüseyin Emre Çevik | Senior Software Developer",
   description:
     "Finans ve bankacılık domainlerinde .NET, mikro servisler, kredi süreçleri ve entegrasyonlar üzerinde çalışan Senior Software Developer.",
