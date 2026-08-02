@@ -66,10 +66,13 @@ test("keeps starter assets removed", async () => {
 });
 
 test("ships local logo and PDF assets", async () => {
-  await Promise.all([
-    access(new URL("../public/huseyin-emre-cevik-cv.pdf", import.meta.url)),
+  const [pdf] = await Promise.all([
+    readFile(new URL("../public/huseyin-emre-cevik-cv.pdf", import.meta.url)),
     access(new URL("../public/brand/fimple.png", import.meta.url)),
     access(new URL("../public/brand/dgpays.svg", import.meta.url)),
     access(new URL("../public/brand/softtech.svg", import.meta.url)),
   ]);
+
+  const pageCount = pdf.toString("latin1").match(/\/Type\s*\/Page\b/g)?.length ?? 0;
+  assert.equal(pageCount, 1);
 });
