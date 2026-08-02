@@ -172,32 +172,33 @@ export default function Home() {
         ))}
       </section>
 
-      <section className="experience-section" id="experience">
+      <section className="experience-section snap-panel" id="experience">
         <div className="section-intro compact">
           <p className="eyebrow">Deneyim</p>
           <h2>Finansal servislerden operasyonel iş uygulamalarına.</h2>
         </div>
-
-        <div className="timeline">
-          {experiences.map((job) => (
-            <article className={`timeline-item ${job.tone}`} key={`${job.company}-${job.period}`}>
-              <div className="timeline-meta">
-                <span>{job.period}</span>
-                <span>{job.place}</span>
-              </div>
-              <div className="timeline-body">
-                <p>{job.role}</p>
-                <h3>{job.company}</h3>
-                <ul>
-                  {job.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
       </section>
+
+      {experiences.map((job) => (
+        <section
+          className={`experience-slide snap-panel ${job.tone}`}
+          key={`${job.company}-${job.period}`}
+        >
+          <div className="slide-meta">
+            <span>{job.period}</span>
+            <span>{job.place}</span>
+          </div>
+          <div className="slide-copy">
+            <p className="eyebrow">{job.role}</p>
+            <h2>{job.company}</h2>
+            <ul>
+              {job.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))}
 
       <section className="stack-section" id="stack">
         <div>

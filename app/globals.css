@@ -22,6 +22,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 58px;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -38,7 +40,6 @@ a {
 
 .site {
   min-height: 100vh;
-  overflow: hidden;
 }
 
 .topbar {
@@ -76,6 +77,8 @@ a {
   align-items: center;
   background:
     linear-gradient(180deg, #ffffff 0%, #f7f7f5 58%, #eceff3 100%);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .hero-copy {
@@ -146,9 +149,9 @@ h1 {
 
 .hero-visual {
   position: relative;
-  min-height: 520px;
+  min-height: min(520px, calc(100vh - 140px));
   display: grid;
-  align-content: end;
+  align-content: center;
   justify-items: center;
   animation: rise 900ms ease 120ms both;
 }
@@ -156,8 +159,12 @@ h1 {
 .hero-visual::before {
   content: "";
   position: absolute;
-  inset: 9% 4% 0;
-  border-radius: 34px;
+  width: min(430px, 100%);
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
   background:
     linear-gradient(145deg, rgba(0, 102, 204, 0.18), transparent 42%),
     #111318;
@@ -167,11 +174,13 @@ h1 {
 .hero-visual img {
   position: relative;
   z-index: 1;
-  width: min(380px, 100%);
-  aspect-ratio: 0.82;
+  width: min(360px, 78vw);
+  aspect-ratio: 1;
   object-fit: cover;
   object-position: center top;
-  border-radius: 28px;
+  border: 10px solid white;
+  border-radius: 50%;
+  box-shadow: 0 28px 80px rgba(5, 5, 5, 0.2);
   filter: saturate(0.96) contrast(1.03);
 }
 
@@ -179,7 +188,7 @@ h1 {
   position: relative;
   z-index: 2;
   width: min(360px, calc(100% - 28px));
-  margin-top: -42px;
+  margin-top: -20px;
   padding: 18px;
   display: grid;
   gap: 6px;
@@ -206,7 +215,17 @@ h1 {
 .experience-section,
 .stack-section,
 .education-section {
-  padding: clamp(72px, 10vw, 132px) clamp(20px, 5vw, 72px);
+  min-height: calc(100vh - 58px);
+  padding: clamp(54px, 7vw, 90px) clamp(20px, 5vw, 72px);
+  display: grid;
+  align-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline-name: --panel;
+  view-timeline-axis: block;
+  animation: panel-reveal both ease;
+  animation-timeline: --panel;
+  animation-range: entry 8% cover 34%;
 }
 
 .section-intro {
@@ -284,10 +303,19 @@ h2 {
 }
 
 .impact-section {
-  padding: 0 clamp(20px, 5vw, 72px) clamp(72px, 10vw, 132px);
+  min-height: calc(100vh - 58px);
+  padding: clamp(54px, 7vw, 90px) clamp(20px, 5vw, 72px);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  align-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline-name: --panel;
+  view-timeline-axis: block;
+  animation: panel-reveal both ease;
+  animation-timeline: --panel;
+  animation-range: entry 8% cover 34%;
 }
 
 .impact-section article {
@@ -320,55 +348,51 @@ h2 {
   color: #8fc7ff;
 }
 
-.timeline {
+.experience-slide {
+  min-height: calc(100vh - 58px);
+  padding: clamp(54px, 7vw, 90px) clamp(20px, 5vw, 72px);
   display: grid;
-  gap: 18px;
+  grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 96px);
+  align-items: center;
+  color: white;
+  background: #111318;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  view-timeline-name: --panel;
+  view-timeline-axis: block;
+  animation: panel-reveal both ease;
+  animation-timeline: --panel;
+  animation-range: entry 8% cover 34%;
 }
 
-.timeline-item {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: clamp(20px, 4vw, 52px);
-  padding: clamp(24px, 4vw, 42px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.06);
+.experience-slide.current {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.28), transparent 34%),
+    #111318;
 }
 
-.timeline-item.current {
-  border-color: rgba(143, 199, 255, 0.5);
-  background: linear-gradient(135deg, rgba(0, 102, 204, 0.3), rgba(255, 255, 255, 0.06));
-}
-
-.timeline-meta {
+.slide-meta {
   display: grid;
-  align-content: start;
   gap: 8px;
   color: #aeb6c2;
   font-size: 0.95rem;
   font-weight: 800;
 }
 
-.timeline-body > p {
-  margin-bottom: 6px;
-  color: #8fc7ff;
-  font-weight: 900;
+.slide-copy {
+  max-width: 980px;
 }
 
-.timeline-body h3 {
-  margin-bottom: 18px;
-  font-size: clamp(2rem, 4vw, 3.7rem);
-  line-height: 1;
-}
-
-.timeline-body ul {
+.slide-copy ul {
   margin: 0;
   padding-left: 20px;
   color: #e8ebef;
-  line-height: 1.72;
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.65;
 }
 
-.timeline-body li + li {
+.slide-copy li + li {
   margin-top: 8px;
 }
 
@@ -425,12 +449,29 @@ h2 {
   }
 }
 
+@keyframes panel-reveal {
+  from {
+    opacity: 0.36;
+    transform: scale(0.985) translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 1ms !important;
+    animation-timeline: auto !important;
     scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-snap-type: none;
   }
 }
 
@@ -443,17 +484,13 @@ h2 {
   .focus-grid,
   .stack-section,
   .education-section,
-  .timeline-item,
+  .experience-slide,
   .impact-section {
     grid-template-columns: 1fr;
   }
 
   .hero-visual {
     min-height: auto;
-  }
-
-  .hero-visual::before {
-    inset: 7% 0 0;
   }
 
   .impact-section {
@@ -473,6 +510,7 @@ h2 {
   .hero,
   .focus-section,
   .experience-section,
+  .experience-slide,
   .stack-section,
   .education-section {
     padding-inline: 18px;
