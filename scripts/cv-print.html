@@ -15,311 +15,313 @@
 
       body {
         margin: 0;
-        color: #111827;
+        color: #529cca;
         font-family: Arial, Helvetica, sans-serif;
-        background: white;
+        background: #38383b;
       }
 
       .page {
-        height: 283mm;
-        display: grid;
-        grid-template-columns: 32% 1fr;
-        gap: 12px;
+        min-height: 283mm;
+        padding: 7mm 6mm;
+        background: #38383b;
       }
 
-      aside {
-        padding: 15px;
-        border-radius: 14px;
-        background: #0f172a;
-        color: white;
-      }
-
-      main {
-        padding: 2px 2px 0;
-      }
-
-      .profile {
-        width: 84px;
-        height: 84px;
-        margin-bottom: 12px;
-        object-fit: cover;
-        object-position: center top;
-        border: 5px solid white;
-        border-radius: 50%;
+      header {
+        margin-bottom: 9mm;
+        text-align: center;
       }
 
       h1,
       h2,
       h3,
-      p {
+      p,
+      ul {
         margin-top: 0;
       }
 
       h1 {
-        margin-bottom: 4px;
-        font-size: 25px;
-        line-height: 0.95;
-      }
-
-      .role {
-        margin-bottom: 12px;
-        color: #60a5fa;
-        font-size: 10px;
-        font-weight: 800;
+        margin-bottom: 2.4mm;
+        color: #ffffff;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: 0.04em;
         text-transform: uppercase;
       }
 
-      aside section {
-        margin-top: 14px;
-      }
-
-      aside h2,
-      .section-title {
-        margin-bottom: 7px;
-        color: #2563eb;
-        font-size: 9px;
-        font-weight: 900;
+      .role {
+        margin-bottom: 3mm;
+        color: #8dd9bf;
+        font-size: 9.8px;
+        font-weight: 800;
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
-      aside h2 {
-        color: #bfdbfe;
+      .contact {
+        display: flex;
+        justify-content: center;
+        gap: 11px;
+        color: #8dd9bf;
+        font-size: 9px;
+        font-weight: 700;
       }
 
-      aside p,
-      aside li {
-        color: #e5e7eb;
-        font-size: 8.3px;
-        line-height: 1.42;
+      .contact span + span::before {
+        content: "|";
+        margin-right: 11px;
+        color: rgba(255, 255, 255, 0.62);
       }
 
-      aside p {
-        margin-bottom: 4px;
+      section {
+        margin-top: 6.6mm;
       }
 
-      ul {
-        margin: 0;
-        padding-left: 13px;
+      h2 {
+        margin-bottom: 3.4mm;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        align-items: center;
+        color: #529cca;
+        font-size: 10.8px;
+        font-weight: 900;
       }
 
-      li + li {
-        margin-top: 3px;
+      h2::after {
+        content: "";
+        height: 1px;
+        background: rgba(82, 156, 202, 0.78);
       }
 
       .skills {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 3.2px 8px;
+        color: #529cca;
+        font-size: 8.9px;
+        font-weight: 800;
       }
 
-      .skills span {
-        padding: 3px 5px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        font-size: 7.2px;
-        font-weight: 700;
-      }
-
-      .summary {
-        margin-bottom: 9px;
-        padding: 10px 12px;
-        border-radius: 12px;
-        background: #eff6ff;
-      }
-
-      .summary p {
-        margin-bottom: 0;
-        color: #1f2937;
-        font-size: 8.8px;
-        line-height: 1.42;
+      .skills span + span::before {
+        content: "|";
+        margin-right: 8px;
+        color: rgba(141, 217, 191, 0.72);
       }
 
       .job {
-        padding: 7px 0;
-        border-bottom: 1px solid #e5e7eb;
         break-inside: avoid;
       }
 
-      .job:first-of-type {
-        padding-top: 4px;
+      .job + .job {
+        margin-top: 5.6mm;
       }
 
       .job-head {
+        margin-bottom: 2.4mm;
         display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 8px;
-        align-items: start;
-        margin-bottom: 4px;
+        grid-template-columns: minmax(122px, 0.9fr) minmax(92px, 0.42fr) minmax(112px, 0.48fr) auto;
+        gap: 9px;
+        align-items: baseline;
       }
 
       h3 {
-        margin-bottom: 2px;
-        font-size: 10.5px;
+        margin-bottom: 0;
+        color: #529cca;
+        font-size: 9.6px;
+        line-height: 1.15;
       }
 
-      .company {
+      .company,
+      .place,
+      .period {
         margin-bottom: 0;
-        color: #4b5563;
-        font-size: 8px;
-        font-weight: 700;
+        color: #8dd9bf;
+        font-size: 9px;
+        font-weight: 800;
       }
 
       .period {
-        margin-bottom: 0;
-        color: #64748b;
-        font-size: 7.5px;
-        font-weight: 800;
-        text-align: right;
         white-space: nowrap;
+        text-align: right;
       }
 
-      main li {
-        color: #374151;
-        font-size: 7.7px;
-        line-height: 1.28;
-      }
-
-      .education {
-        margin-top: 8px;
-        padding: 9px 11px;
-        border-radius: 10px;
-        background: #f8fafc;
-      }
-
-      .education p {
+      ul {
         margin-bottom: 0;
-        color: #374151;
-        font-size: 8.3px;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      li {
+        position: relative;
+        padding-left: 10px;
+        color: #529cca;
+        font-size: 8px;
+        line-height: 1.4;
+      }
+
+      li::before {
+        content: "-";
+        position: absolute;
+        left: 0;
+      }
+
+      li + li {
+        margin-top: 1.55mm;
+      }
+
+      .education-grid,
+      .personal-grid {
+        display: grid;
+        gap: 5px 13px;
+        color: #529cca;
+        font-size: 8.9px;
+        font-weight: 800;
+      }
+
+      .education-grid {
+        grid-template-columns: minmax(118px, 0.8fr) minmax(140px, 1fr) minmax(92px, 0.56fr) auto;
+      }
+
+      .education-grid p {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+      }
+
+      .personal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .personal-grid p {
+        margin-bottom: 0;
+      }
+
+      .personal-grid strong {
+        color: #529cca;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <aside>
-        <img class="profile" src="../public/profile.jpg" alt="" />
+      <header>
         <h1>Hüseyin Emre Çevik</h1>
         <p class="role">Senior Software Developer</p>
+        <div class="contact">
+          <span>hemrecevik</span>
+          <span>+90 541 498 1116</span>
+          <span>hemrecevik@gmail.com</span>
+          <span>Gölcük / Kocaeli</span>
+        </div>
+      </header>
 
-        <section>
-          <h2>İletişim</h2>
-          <p>hemrecevik@gmail.com</p>
-          <p>+90 541 498 1116</p>
-          <p>Gölcük / Kocaeli</p>
-        </section>
+      <section>
+        <h2>Yetkinlikler</h2>
+        <div class="skills">
+          <span>C#</span><span>.NET</span><span>.NET 8</span><span>Java</span><span>JavaScript</span>
+          <span>PostgreSQL</span><span>MSSQL</span><span>React</span><span>jQuery</span><span>Git</span>
+          <span>TFS</span><span>Camunda BPM</span><span>Unit Testing</span><span>OOP</span>
+          <span>Microservices</span><span>Frontend</span><span>Backend</span><span>Full-Stack</span>
+        </div>
+      </section>
 
-        <section>
-          <h2>Teknik Set</h2>
-          <div class="skills">
-            <span>C#</span><span>.NET 8</span><span>Java</span><span>JavaScript</span>
-            <span>React</span><span>PostgreSQL</span><span>MSSQL</span>
-            <span>Microservices</span><span>Camunda BPM</span><span>Trino</span>
-            <span>Dolt</span><span>Git</span><span>TFS</span><span>Unit Testing</span>
-          </div>
-        </section>
-
-        <section>
-          <h2>Domain</h2>
-          <ul>
-            <li>Kredi başvurusu, tahsis, kullandırım ve tahsilat</li>
-            <li>Risk, yasal takip ve teminat süreçleri</li>
-            <li>Experian, Telco, AML ve DMS entegrasyonları</li>
-            <li>REST API, performans ve sorgu optimizasyonu</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Bilgiler</h2>
-          <p>Türkçe, İngilizce</p>
-          <p>Askerlik tamamlandı</p>
-          <p>B sınıfı ehliyet</p>
-        </section>
-      </aside>
-
-      <main>
-        <section class="summary">
-          <h2 class="section-title">Profil</h2>
-          <p>
-            Finans ve bankacılık domainlerinde backend ağırlıklı full-stack geliştirme
-            yapan Senior Software Developer. Mikro servisler, kredi yaşam döngüsü,
-            entegrasyonlar, servis bakımı ve üretim ortamı hata çözümü konularında
-            aktif rol alır.
-          </p>
-        </section>
-
-        <h2 class="section-title">Deneyim</h2>
+      <section>
+        <h2>Deneyimler</h2>
 
         <article class="job">
           <div class="job-head">
-            <div>
-              <h3>Full-Stack Engineer - Upenerji</h3>
-              <p class="company">Konya, Türkiye</p>
-            </div>
-            <p class="period">11/2020 - 09/2021</p>
-          </div>
-          <ul>
-            <li>Enerji sektöründeki firmalara danışmanlık ve yazılım hizmeti verdi.</li>
-            <li>MEDAŞ için kurum içinde kullanılan web projeleri geliştirdi.</li>
-            <li>.NET MVC, MSSQL ve Android teknolojileriyle puantaj, proje yönetim ve ziyaretçi takip sistemleri üzerinde çalıştı.</li>
-          </ul>
-        </article>
-
-        <article class="job">
-          <div class="job-head">
-            <div>
-              <h3>Software Engineer - Softtech</h3>
-              <p class="company">İstanbul, Türkiye</p>
-            </div>
-            <p class="period">09/2021 - 01/2023</p>
-          </div>
-          <ul>
-            <li>Sermaye piyasaları alım satım sistemleri departmanında emir iletimi ve risk kontrol sistemleri üzerinde çalıştı.</li>
-            <li>Borsa emirlerinin kontrolü ve borsaya aktarımı için web servis geliştirmeleri yaptı.</li>
-            <li>Trademaster client uygulaması ve ilgili servislerin geliştirme ve destek süreçlerinde rol aldı.</li>
-            <li>Akıllı Emir API entegrasyonu, tarihli emir, şartlı emir ve zincir emir ekranları geliştirdi.</li>
-          </ul>
-        </article>
-
-        <article class="job">
-          <div class="job-head">
-            <div>
-              <h3>Software Engineer - Dgpays</h3>
-              <p class="company">İstanbul, Türkiye</p>
-            </div>
-            <p class="period">01/2023 - 03/2026</p>
-          </div>
-          <ul>
-            <li>Temel bankacılık departmanında krediler ekibinde çalıştı.</li>
-            <li>Kredi, tahsilat, teminat, müşteri başvuru, yasal takip ve risk domainleri için bağımsız mikro servisler geliştirdi.</li>
-            <li>CRUD API'leri, .NET 8 backend servisleri ve React arayüz geliştirmelerini destekledi.</li>
-            <li>Camunda Modeler ile iş akışı ve süreç otomasyonu tasarımları yaptı.</li>
-            <li>Dolt ve Trino kullanarak veri yönetimi, entegrasyon ve veritabanı script süreçlerini yürüttü.</li>
-          </ul>
-        </article>
-
-        <article class="job">
-          <div class="job-head">
-            <div>
-              <h3>Software Engineer - Fimple</h3>
-              <p class="company">İstanbul, Türkiye</p>
-            </div>
+            <h3>Software Engineer</h3>
+            <p class="company">Fimple</p>
+            <p class="place">İstanbul, Türkiye</p>
             <p class="period">03/2026 - Devam</p>
           </div>
           <ul>
-            <li>Fimple bünyesinde Tera Bank müşterisine özel geliştirilen dijital bankacılık platformunda görev alıyor.</li>
-            <li>Kredi başvurusu, tahsis, kullandırım, tahsilat ve risk süreçlerine yönelik geliştirmeler gerçekleştiriyor.</li>
-            <li>Yeni özellik geliştirme, mevcut servis bakımı ve üretim ortamı hata çözümü süreçlerinde aktif rol alıyor.</li>
-            <li>Experian, Telco, AML ve DMS gibi üçüncü parti servislerle entegrasyon geliştirmeleri ve iyileştirmeleri yapıyor.</li>
-            <li>REST API geliştirme, veritabanı sorgu optimizasyonu ve performans iyileştirme çalışmalarını yürütüyor.</li>
+            <li>Fimple bünyesinde Tera Bank müşterisine özel geliştirilen dijital bankacılık platformunda görev alıyorum.</li>
+            <li>Kredi başvurusu, tahsis, kullandırım, tahsilat ve risk süreçlerine yönelik geliştirmeler gerçekleştiriyorum.</li>
+            <li>Yeni özellik geliştirme, servis bakımı ve üretim ortamında karşılaşılan hataların giderilmesi süreçlerinde aktif rol alıyorum.</li>
+            <li>Experian, Telco, AML ve DMS gibi üçüncü parti servislerle entegrasyon geliştirmeleri ve iyileştirmeleri gerçekleştiriyorum.</li>
+            <li>REST API geliştirme, veritabanı sorgu optimizasyonu ve performans iyileştirme çalışmalarını yürütüyorum.</li>
+            <li>İş birimleri ve banka ekipleriyle koordineli çalışarak analiz, geliştirme, test ve canlıya alma süreçlerine katkı sağlıyorum.</li>
           </ul>
         </article>
 
-        <section class="education">
-          <h2 class="section-title">Eğitim</h2>
-          <p>Konya Teknik Üniversitesi - Bilgisayar Mühendisliği, 2016 - 2020, GNO 3.04</p>
-        </section>
-      </main>
+        <article class="job">
+          <div class="job-head">
+            <h3>Software Engineer</h3>
+            <p class="company">Dgpays</p>
+            <p class="place">İstanbul, Türkiye</p>
+            <p class="period">01/2023 - 03/2026</p>
+          </div>
+          <ul>
+            <li>Temel bankacılık departmanı altında krediler ekibinde çalıştım.</li>
+            <li>Kredi, tahsilat, teminat, müşteri başvuru, yasal takip ve risk domainleri için bağımsız mikro servisler geliştirdim.</li>
+            <li>CRUD API'leri, .NET 8 backend servisleri ve React arayüz geliştirmelerini destekledim.</li>
+            <li>İş akışları ve süreç otomasyonu için Camunda Modeler kullanarak süreç tasarımı gerçekleştirdim.</li>
+            <li>Dolt ve Trino kullanarak veri yönetimi, entegrasyon ve veritabanı script süreçlerini yürüttüm.</li>
+            <li>Git versiyon kontrol sistemi kullanarak kod yönetimi ve iş birliği süreçlerini etkin şekilde yönettim.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h3>Software Engineer</h3>
+            <p class="company">Softtech</p>
+            <p class="place">İstanbul, Türkiye</p>
+            <p class="period">09/2021 - 01/2023</p>
+          </div>
+          <ul>
+            <li>Sermaye piyasaları alım satım sistemleri departmanı altında alım-satım ve risk kontrol sistemleri biriminde çalıştım.</li>
+            <li>Borsa emirlerinin kontrolü ve borsaya aktarımı için web servis geliştirmeleri yaptım.</li>
+            <li>Trademaster client uygulaması ve ilgili servislerin geliştirme ve destek süreçlerinde rol aldım.</li>
+            <li>Akıllı Emir API entegrasyonu, tarihli emir, şartlı emir ve zincir emir ekranları geliştirdim.</li>
+            <li>Mobil ve web cihazları için RESTful ve SOAP servisleri ile entegrasyon çalışmalarına destek verdim.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h3>Full-Stack Engineer</h3>
+            <p class="company">Upenerji</p>
+            <p class="place">Konya, Türkiye</p>
+            <p class="period">11/2020 - 09/2021</p>
+          </div>
+          <ul>
+            <li>Enerji sektöründeki firmalara danışmanlık ve yazılım hizmeti verdim.</li>
+            <li>MEDAŞ için kurum içinde kullanılan web projeleri geliştirdim.</li>
+            <li>.NET MVC, MSSQL ve Android teknolojileriyle puantaj, proje yönetim ve ziyaretçi takip sistemleri üzerinde çalıştım.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>Eğitim</h2>
+        <div class="education-grid">
+          <strong>Mühendislik Fakültesi</strong>
+          <span>Konya Teknik Üniversitesi</span>
+          <span>Konya, Türkiye</span>
+          <time>2016 - 2020</time>
+          <p>Bilgisayar Mühendisliği</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Kişisel Bilgiler</h2>
+        <div class="personal-grid">
+          <p><strong>Doğum Tarihi:</strong> 14.08.1998</p>
+          <p><strong>Medeni Durum:</strong> Evli</p>
+          <p><strong>Askerlik:</strong> Tamamlandı</p>
+          <p><strong>Adres:</strong> Gölcük / Kocaeli</p>
+          <p><strong>Ehliyet:</strong> B Sınıfı</p>
+          <p><strong>Dil:</strong> Türkçe, İngilizce</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Diğerleri</h2>
+        <ul>
+          <li>GNO: 3.04</li>
+          <li>Yüksek Onur Belgesi: Konya Teknik Üniversitesi, 12/2019</li>
+          <li>Yüksek Onur Belgesi: Konya Teknik Üniversitesi, 06/2020</li>
+        </ul>
+      </section>
     </div>
   </body>
 </html>

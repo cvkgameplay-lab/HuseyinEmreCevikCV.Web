@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Hüseyin Emre Çevik | Senior Software Developer",
   description:
-    "Fimple bünyesinde dijital bankacılık platformları, kredi süreçleri ve entegrasyonlar üzerinde çalışan senior software developer.",
+    "Finans ve bankacılık domainlerinde .NET, mikro servisler, kredi süreçleri ve entegrasyonlar üzerinde çalışan senior software developer.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

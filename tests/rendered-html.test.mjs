@@ -44,15 +44,18 @@ test("server-renders the modern CV portfolio", async () => {
   assert.match(html, /src="\/brand\/softtech\.svg"/);
   assert.match(html, /Experian/);
   assert.match(html, /src="\/profile\.jpg"/);
-  assert.match(html, /cv-sheet/);
-  assert.match(html, /cv-sidebar/);
-  assert.match(html, /experience-list/);
+  assert.match(html, /resume-sheet/);
+  assert.match(html, /resume-section/);
+  assert.match(html, /experience-stack/);
+  assert.match(html, /Yetkinlikler/);
+  assert.match(html, /Kişisel Bilgiler/);
   assert.match(html, /hemrecevik@gmail\.com/);
-  const timelineHtml = html.slice(html.indexOf("experience-list"));
-  assert.match(timelineHtml, /Upenerji[\s\S]*Softtech[\s\S]*Dgpays[\s\S]*Fimple/);
+  const timelineHtml = html.slice(html.indexOf("experience-stack"));
+  assert.match(timelineHtml, /Fimple[\s\S]*Dgpays[\s\S]*Softtech[\s\S]*Upenerji/);
   assert.doesNotMatch(html, /impact-section/);
   assert.doesNotMatch(html, /experience-slide/);
   assert.doesNotMatch(html, /Bankacılık ürünlerini servis mimarisiyle hayata geçiriyorum/);
+  assert.doesNotMatch(html, /cv-sidebar|cv-sheet/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/);
 });
 
