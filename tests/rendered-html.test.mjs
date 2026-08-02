@@ -44,10 +44,11 @@ test("server-renders the modern CV portfolio", async () => {
   assert.match(html, /src="\/brand\/softtech\.svg"/);
   assert.match(html, /Experian/);
   assert.match(html, /src="\/profile\.jpg"/);
-  assert.match(html, /fixed-stage/);
-  assert.match(html, /timeline-list/);
+  assert.match(html, /cv-sheet/);
+  assert.match(html, /cv-sidebar/);
+  assert.match(html, /experience-list/);
   assert.match(html, /hemrecevik@gmail\.com/);
-  const timelineHtml = html.slice(html.indexOf("timeline-list"));
+  const timelineHtml = html.slice(html.indexOf("experience-list"));
   assert.match(timelineHtml, /Upenerji[\s\S]*Softtech[\s\S]*Dgpays[\s\S]*Fimple/);
   assert.doesNotMatch(html, /impact-section/);
   assert.doesNotMatch(html, /experience-slide/);
@@ -67,7 +68,6 @@ test("keeps starter assets removed", async () => {
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
-  await assert.rejects(access(new URL("../scripts/cv-print.html", import.meta.url)));
 });
 
 test("ships local logo and PDF assets", async () => {
@@ -80,4 +80,5 @@ test("ships local logo and PDF assets", async () => {
 
   const pageCount = pdf.toString("latin1").match(/\/Type\s*\/Page\b/g)?.length ?? 0;
   assert.equal(pageCount, 1);
+  assert.equal(pdf.includes(Buffer.from("file:///")), false);
 });

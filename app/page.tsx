@@ -13,46 +13,13 @@ const skills = [
   "Git",
   "TFS",
   "Unit Testing",
-  "OOP",
 ];
 
-type CompanyLogo = {
-  name: string;
-  src?: string;
-  initials?: string;
-  contrast?: "light";
-};
-
-const companyLogos: CompanyLogo[] = [
-  {
-    name: "Upenerji",
-    initials: "UP",
-  },
-  {
-    name: "Softtech",
-    src: "/brand/softtech.svg",
-  },
-  {
-    name: "Dgpays",
-    src: "/brand/dgpays.svg",
-    contrast: "light",
-  },
-  {
-    name: "Fimple",
-    src: "/brand/fimple.png",
-  },
-];
-
-const currentFocus = [
-  "Kredi başvurusu",
-  "Tahsis",
-  "Kullandırım",
-  "Tahsilat",
-  "Risk",
-  "Experian",
-  "Telco",
-  "AML",
-  "DMS",
+const domains = [
+  "Kredi başvurusu, tahsis, kullandırım ve tahsilat",
+  "Risk, yasal takip ve teminat süreçleri",
+  "Experian, Telco, AML ve DMS entegrasyonları",
+  "REST API, performans ve sorgu optimizasyonu",
 ];
 
 type Experience = {
@@ -60,37 +27,44 @@ type Experience = {
   company: string;
   logo?: string;
   logoText?: string;
-  place: string;
   period: string;
-  tone: string;
+  place: string;
   contrast?: "light";
   bullets: string[];
 };
 
 const experiences: Experience[] = [
   {
-    role: "Software Engineer",
-    company: "Fimple",
-    logo: "/brand/fimple.png",
-    place: "İstanbul, Türkiye",
-    period: "03/2026 - Devam",
-    tone: "current",
+    role: "Full-Stack Engineer",
+    company: "Upenerji",
+    logoText: "UP",
+    period: "11/2020 - 09/2021",
+    place: "Konya, Türkiye",
     bullets: [
-      "Fimple bünyesinde Tera Bank müşterisine özel geliştirilen dijital bankacılık platformunda görev alıyor.",
-      "Kredi başvurusu, tahsis, kullandırım, tahsilat ve risk süreçlerine yönelik geliştirmeler gerçekleştiriyor.",
-      "Yeni özelliklerin geliştirilmesi, mevcut servislerin bakımı ve üretim ortamında karşılaşılan hataların giderilmesi süreçlerinde aktif rol alıyor.",
-      "Experian, Telco, AML ve DMS gibi üçüncü parti servislerle entegrasyon geliştirmeleri ve iyileştirmeleri gerçekleştiriyor.",
-      "REST API geliştirme, veritabanı sorgularının optimize edilmesi ve performans iyileştirme çalışmalarını yürütüyor.",
-      "İş birimleri ve banka ekipleriyle koordineli çalışarak analiz, geliştirme, test ve canlıya alma süreçlerine katkı sağlıyor.",
+      "Enerji sektöründeki firmalara danışmanlık ve yazılım hizmeti verdi.",
+      "MEDAŞ için kurum içinde kullanılan web projeleri geliştirdi.",
+      ".NET MVC, MSSQL ve Android teknolojileriyle puantaj, proje yönetim ve ziyaretçi takip sistemleri üzerinde çalıştı.",
+    ],
+  },
+  {
+    role: "Software Engineer",
+    company: "Softtech",
+    logo: "/brand/softtech.svg",
+    period: "09/2021 - 01/2023",
+    place: "İstanbul, Türkiye",
+    bullets: [
+      "Sermaye piyasaları alım satım sistemleri departmanında emir iletimi ve risk kontrol sistemleri üzerinde çalıştı.",
+      "Borsa emirlerinin kontrolü ve borsaya aktarımı için web servis geliştirmeleri yaptı.",
+      "Trademaster client uygulaması ve ilgili servislerin geliştirme ve destek süreçlerinde rol aldı.",
+      "Akıllı Emir API entegrasyonu, tarihli emir, şartlı emir ve zincir emir ekranları geliştirdi.",
     ],
   },
   {
     role: "Software Engineer",
     company: "Dgpays",
     logo: "/brand/dgpays.svg",
-    place: "İstanbul, Türkiye",
     period: "01/2023 - 03/2026",
-    tone: "past",
+    place: "İstanbul, Türkiye",
     contrast: "light",
     bullets: [
       "Temel bankacılık departmanında krediler ekibinde çalıştı.",
@@ -102,180 +76,118 @@ const experiences: Experience[] = [
   },
   {
     role: "Software Engineer",
-    company: "Softtech",
-    logo: "/brand/softtech.svg",
+    company: "Fimple",
+    logo: "/brand/fimple.png",
+    period: "03/2026 - Devam",
     place: "İstanbul, Türkiye",
-    period: "09/2021 - 01/2023",
-    tone: "past",
     bullets: [
-      "Sermaye piyasaları alım satım sistemleri departmanında emir iletimi ve risk kontrol sistemleri üzerinde çalıştı.",
-      "Borsa emirlerinin kontrolü ve borsaya aktarımı için web servis geliştirmeleri yaptı.",
-      "Trademaster client uygulaması ve ilgili servislerin geliştirme ve destek süreçlerinde rol aldı.",
-      "Akıllı Emir API entegrasyonu, tarihli emir, şartlı emir ve zincir emir ekranları geliştirdi.",
-      "Mobil ve web istemcileri için RESTful ve SOAP servis entegrasyonları sağladı.",
-    ],
-  },
-  {
-    role: "Full-Stack Engineer",
-    company: "Upenerji",
-    logoText: "UP",
-    place: "Konya, Türkiye",
-    period: "11/2020 - 09/2021",
-    tone: "past",
-    bullets: [
-      "Enerji sektöründeki firmalara danışmanlık ve yazılım hizmeti verdi.",
-      "MEDAŞ için sıfırdan web projeleri geliştirdi; projeler kurum içinde kullanılmaya devam ediyor.",
-      ".NET MVC, MSSQL ve Android teknolojileriyle puantaj sistemi, proje yönetim uygulaması ve ziyaretçi takip sistemi üzerinde çalıştı.",
+      "Fimple bünyesinde Tera Bank müşterisine özel geliştirilen dijital bankacılık platformunda görev alıyor.",
+      "Kredi başvurusu, tahsis, kullandırım, tahsilat ve risk süreçlerine yönelik geliştirmeler gerçekleştiriyor.",
+      "Yeni özellik geliştirme, mevcut servis bakımı ve üretim ortamı hata çözümü süreçlerinde aktif rol alıyor.",
+      "Experian, Telco, AML ve DMS gibi üçüncü parti servislerle entegrasyon geliştirmeleri ve iyileştirmeleri yapıyor.",
+      "REST API geliştirme, veritabanı sorgu optimizasyonu ve performans iyileştirme çalışmalarını yürütüyor.",
     ],
   },
 ];
 
 export default function Home() {
-  const chronologicalExperiences = [...experiences].reverse();
-
   return (
-    <main className="site">
-      <div className="fixed-stage" aria-hidden="true">
-        <span>Digital Banking</span>
-        <strong>Microservices · API · Risk · Credit</strong>
-      </div>
-
-      <nav className="topbar" aria-label="Sayfa bölümleri">
-        <a href="#home">Hüseyin Emre Çevik</a>
+    <main className="cv-page">
+      <nav className="cv-toolbar" aria-label="CV işlemleri">
+        <strong>Hüseyin Emre Çevik</strong>
         <div>
-          <a href="#now">Şu an</a>
-          <a href="#experience">Deneyim</a>
-          <a href="#stack">Stack</a>
           <a href="/huseyin-emre-cevik-cv.pdf" download>
             PDF İndir
           </a>
-          <a href="mailto:hemrecevik@gmail.com">İletişim</a>
+          <a href="mailto:hemrecevik@gmail.com">Mail Gönder</a>
         </div>
       </nav>
 
-      <section className="hero snap-panel" id="home">
-        <div className="screen-card hero-card">
-          <div className="hero-copy">
-            <p className="eyebrow">Senior Software Developer</p>
-            <h1>Hüseyin Emre Çevik</h1>
-            <div className="hero-links" aria-label="İletişim bağlantıları">
-              <a className="download-link" href="/huseyin-emre-cevik-cv.pdf" download>
-                Güncel PDF CV İndir
-              </a>
-              <a href="mailto:hemrecevik@gmail.com">hemrecevik@gmail.com</a>
-              <a href="tel:+905414981116">+90 541 498 1116</a>
-              <span>Gölcük / Kocaeli</span>
-            </div>
-            <div className="logo-rail" aria-label="Çalışılan firmalar">
-              {companyLogos.map((logo) => (
-                <span
-                  className={`logo-tile ${logo.contrast === "light" ? "light-logo" : ""}`}
-                  key={logo.name}
-                >
-                  {logo.src ? (
-                    <img src={logo.src} alt={`${logo.name} logosu`} />
-                  ) : (
-                    <strong>{logo.initials}</strong>
-                  )}
-                </span>
-              ))}
-            </div>
-          </div>
+      <section className="cv-sheet" aria-label="Hüseyin Emre Çevik CV">
+        <aside className="cv-sidebar">
+          <img src="/profile.jpg" alt="Hüseyin Emre Çevik portre fotoğrafı" />
+          <h1>Hüseyin Emre Çevik</h1>
+          <p className="role">Senior Software Developer</p>
 
-          <div className="hero-visual" aria-label="Profil özeti">
-            <img src="/profile.jpg" alt="Hüseyin Emre Çevik portre fotoğrafı" />
-            <div className="visual-caption">
-              <span>Current Role</span>
-              <strong>Senior Developer · Fimple</strong>
-            </div>
-          </div>
-        </div>
-      </section>
+          <section>
+            <h2>İletişim</h2>
+            <p>hemrecevik@gmail.com</p>
+            <p>+90 541 498 1116</p>
+            <p>Gölcük / Kocaeli</p>
+          </section>
 
-      <section className="focus-section snap-panel" id="now">
-        <div className="screen-card focus-screen">
-          <div className="section-intro">
-            <p className="eyebrow">Şu an</p>
-            <h2>Fimple’da dijital bankacılık platformu geliştiriyorum.</h2>
-          </div>
-          <div className="focus-grid">
-            <article className="focus-card main-focus">
-              <span>03/2026 - Devam</span>
-              <h3>Software Engineer · Fimple</h3>
-              <p>
-                Tera Bank müşterisine özel geliştirilen platformda analiz,
-                geliştirme, test ve canlıya alma süreçlerine katkı sağlıyorum.
-                Üretim ortamında karşılaşılan hataların giderilmesi ve mevcut
-                servislerin bakımı da günlük sorumluluk alanımda.
-              </p>
-            </article>
-            <div className="focus-tags" aria-label="Fimple çalışma alanları">
-              {currentFocus.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="experience-section snap-panel" id="experience">
-        <div className="screen-card experience-card">
-          <div className="section-intro compact">
-            <p className="eyebrow">Deneyim</p>
-            <h2>Finans ve yazılım odaklı kariyer akışı.</h2>
-          </div>
-          <div className="timeline-list">
-            {chronologicalExperiences.map((job) => (
-              <article className="timeline-item" key={`${job.company}-${job.period}`}>
-                <div className={`company-logo ${job.contrast === "light" ? "light-logo" : ""}`}>
-                  {job.logo ? (
-                    <img src={job.logo} alt={`${job.company} logosu`} />
-                  ) : (
-                    <strong>{job.logoText}</strong>
-                  )}
-                </div>
-                <div>
-                  <div className="timeline-head">
-                    <div>
-                      <p className="eyebrow">{job.role}</p>
-                      <h3>{job.company}</h3>
-                    </div>
-                    <span>{job.period}</span>
-                  </div>
-                  <p>{job.bullets[0]}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="stack-section snap-panel" id="stack">
-        <div className="screen-card stack-card final-card">
-          <div>
-            <p className="eyebrow">Teknik set</p>
-            <h2>.NET, mikro servisler ve bankacılık domainleri çevresinde.</h2>
-            <div className="education-summary">
-              <p className="eyebrow">Eğitim</p>
-              <h3>Konya Teknik Üniversitesi</h3>
-              <p>Bilgisayar Mühendisliği · 2016 - 2020 · GNO 3.04</p>
-            </div>
-          </div>
-          <div className="final-column">
-            <div className="skill-cloud">
+          <section>
+            <h2>Teknik Set</h2>
+            <div className="chip-list">
               {skills.map((skill) => (
                 <span key={skill}>{skill}</span>
               ))}
             </div>
-            <div className="contact-panel">
-              <a href="/huseyin-emre-cevik-cv.pdf" download>
-                Güncel PDF CV İndir
-              </a>
-              <a href="mailto:hemrecevik@gmail.com">Mail gönder</a>
-              <span>Türkçe, İngilizce</span>
-              <span>Askerlik tamamlandı · B sınıfı ehliyet</span>
+          </section>
+
+          <section>
+            <h2>Domain</h2>
+            <ul>
+              {domains.map((domain) => (
+                <li key={domain}>{domain}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2>Bilgiler</h2>
+            <p>Türkçe, İngilizce</p>
+            <p>Askerlik tamamlandı</p>
+            <p>B sınıfı ehliyet</p>
+          </section>
+        </aside>
+
+        <div className="cv-content">
+          <section className="profile-block">
+            <h2>Profil</h2>
+            <p>
+              Finans ve bankacılık domainlerinde backend ağırlıklı full-stack
+              geliştirme yapan Senior Software Developer. Mikro servisler, kredi
+              yaşam döngüsü, entegrasyonlar, servis bakımı ve üretim ortamı hata
+              çözümü konularında aktif rol alır.
+            </p>
+          </section>
+
+          <section>
+            <h2>Deneyim</h2>
+            <div className="experience-list">
+              {experiences.map((job) => (
+                <article className="cv-job" key={`${job.company}-${job.period}`}>
+                  <div className="job-header">
+                    <div className={`job-logo ${job.contrast === "light" ? "light-logo" : ""}`}>
+                      {job.logo ? (
+                        <img src={job.logo} alt={`${job.company} logosu`} />
+                      ) : (
+                        <strong>{job.logoText}</strong>
+                      )}
+                    </div>
+                    <div>
+                      <h3>
+                        {job.role} - {job.company}
+                      </h3>
+                      <p>{job.place}</p>
+                    </div>
+                    <span>{job.period}</span>
+                  </div>
+                  <ul>
+                    {job.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
             </div>
-          </div>
+          </section>
+
+          <section className="education-block">
+            <h2>Eğitim</h2>
+            <p>Konya Teknik Üniversitesi - Bilgisayar Mühendisliği, 2016 - 2020, GNO 3.04</p>
+          </section>
         </div>
       </section>
     </main>
