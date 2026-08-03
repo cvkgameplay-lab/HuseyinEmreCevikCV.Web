@@ -4,5 +4,18 @@
   "installCommand": "npm install",
   "framework": null,
   "trailingSlash": false,
-  "cleanUrls": false
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.huseyinemrecevik.com"
+        }
+      ],
+      "destination": "https://huseyinemrecevik.com/$1",
+      "permanent": true
+    }
+  ]
 }
