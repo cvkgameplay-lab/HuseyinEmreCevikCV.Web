@@ -23,6 +23,15 @@ type ContactItem = {
   icon: "phone" | "mail" | "location";
 };
 
+type Education = {
+  school: string;
+  department: string;
+  faculty: string;
+  place: string;
+  period: string;
+  gpa?: string;
+};
+
 const contactItems: ContactItem[] = [
   {
     label: "Telefon",
@@ -134,6 +143,24 @@ const certificates = [
   "Yüksek Onur Belgesi - Konya Teknik Üniversitesi, 06/2020",
 ];
 
+const education: Education[] = [
+  {
+    school: "Konya Teknik Üniversitesi",
+    department: "Bilgisayar Mühendisliği - Yüksek Lisans",
+    faculty: "Mühendislik Fakültesi",
+    place: "Konya, Türkiye",
+    period: "Devam",
+  },
+  {
+    school: "Konya Teknik Üniversitesi",
+    department: "Bilgisayar Mühendisliği",
+    faculty: "Mühendislik Fakültesi",
+    place: "Konya, Türkiye",
+    period: "2016 - 2020",
+    gpa: "3.04",
+  },
+];
+
 export default function Home() {
   const currentYear = new Date().getFullYear();
 
@@ -152,27 +179,33 @@ export default function Home() {
           </Section>
 
           <Section eyebrow="Akademik" title="Eğitim">
-            <article className="info-card education-card">
-              <div>
-                <h3>Konya Teknik Üniversitesi</h3>
-                <p>Bilgisayar Mühendisliği</p>
-                <p className="card-kicker">Mühendislik Fakültesi</p>
-              </div>
-              <dl>
-                <div>
-                  <dt>Konum</dt>
-                  <dd>Konya, Türkiye</dd>
-                </div>
-                <div>
-                  <dt>Tarih</dt>
-                  <dd>2016 - 2020</dd>
-                </div>
-                <div>
-                  <dt>GNO</dt>
-                  <dd>3.04</dd>
-                </div>
-              </dl>
-            </article>
+            <div className="education-list">
+              {education.map((item) => (
+                <article className="info-card education-card" key={`${item.department}-${item.period}`}>
+                  <div>
+                    <h3>{item.school}</h3>
+                    <p>{item.department}</p>
+                    <p className="card-kicker">{item.faculty}</p>
+                  </div>
+                  <dl>
+                    <div>
+                      <dt>Konum</dt>
+                      <dd>{item.place}</dd>
+                    </div>
+                    <div>
+                      <dt>Tarih</dt>
+                      <dd>{item.period}</dd>
+                    </div>
+                    {item.gpa ? (
+                      <div>
+                        <dt>GNO</dt>
+                        <dd>{item.gpa}</dd>
+                      </div>
+                    ) : null}
+                  </dl>
+                </article>
+              ))}
+            </div>
           </Section>
 
           <Section eyebrow="Belgeler" title="Başarılar ve Belgeler">

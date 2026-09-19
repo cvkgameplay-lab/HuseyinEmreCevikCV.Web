@@ -587,6 +587,11 @@ a.contact-row:active {
   color: var(--muted);
 }
 
+.education-list {
+  display: grid;
+  gap: 14px;
+}
+
 .education-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 0.75fr);

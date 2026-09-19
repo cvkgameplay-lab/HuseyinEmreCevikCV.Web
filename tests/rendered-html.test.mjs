@@ -58,6 +58,8 @@ test("server-renders the professional CV portfolio", async () => {
   assert.match(html, /09\/2021 - 01\/2023/);
   assert.match(html, /Upenerji/);
   assert.match(html, /11\/2020 - 09\/2021/);
+  assert.match(html, /Bilgisayar Mühendisliği - Yüksek Lisans/);
+  assert.match(html, /Devam/);
   assert.match(html, /alt="Fimple logosu"/);
   assert.match(html, /alt="Dgpays logosu"/);
   assert.match(html, /alt="Softtech logosu"/);
